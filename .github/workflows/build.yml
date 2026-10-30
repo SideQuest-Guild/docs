@@ -95,7 +95,7 @@ jobs:
       - run: uv run python scripts/generate_companion_reference.py
       - run: uv run python scripts/generate_changelogs.py
       - run: uv run sphinx-build -b html source _build/html -W
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: _build/html
 
