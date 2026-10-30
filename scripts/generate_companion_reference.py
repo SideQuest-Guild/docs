@@ -7,9 +7,9 @@ HTML can't be inlined into a Sphinx page). If `cargo doc` itself fails on a
 repo that has code, that's a real generator failure and this exits non-zero
 so CI fails loudly rather than shipping an empty reference.
 
-The companion repo doesn't have any code yet (see repos.json's "shipped"
-flag) — that's a real, documented product fact, not a generator failure, so
-in that case this writes an honest "not shipped yet" page and still exits 0.
+If repos.json marks the companion `"shipped": false`, or its repo has no
+Cargo.toml, there's no Rust source to document: this writes an honest "not
+shipped yet" page and still exits 0.
 """
 
 from __future__ import annotations
@@ -18,6 +18,7 @@ import json
 import shutil
 import subprocess
 import sys
+import tomllib
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -65,7 +66,7 @@ def main() -> int:
         return 1
 
     result = subprocess.run(
-        ["cargo", "doc", "--no-deps", "--document-private-items=false"],
+        ["cargo", "doc", "--no-deps"],
         cwd=repo_dir,
         capture_output=True,
         text=True,
@@ -86,12 +87,20 @@ def main() -> int:
     RUSTDOC_EXTRA_PATH.parent.mkdir(parents=True, exist_ok=True)
     shutil.copytree(target_doc, RUSTDOC_EXTRA_PATH)
 
+    # `cargo doc --no-deps` writes no top-level index.html, only one folder per crate, named after the library.
+    manifest = tomllib.loads(cargo_toml.read_text())
+    crate = manifest.get("lib", {}).get("name") or manifest["package"]["name"].replace("-", "_")
+    if not (target_doc / crate / "index.html").exists():
+        print(f"error: cargo doc produced no {crate}/index.html in {target_doc}", file=sys.stderr)
+        return 1
+
     OUT_PAGE.parent.mkdir(parents=True, exist_ok=True)
+    # A raw link: MyST would treat a Markdown link to a path outside the Sphinx project as a missing cross-reference.
     OUT_PAGE.write_text(
         f"# {source['title']}\n\n"
         "Generated from the companion app's own doc comments with "
         "`cargo doc --no-deps`.\n\n"
-        "[Open the Rust reference](../rustdoc/index.html)\n"
+        f'<p><a href="../rustdoc/{crate}/index.html">Open the Rust reference</a></p>\n'
     )
     print(f"wrote {OUT_PAGE.relative_to(ROOT)} and copied rustdoc output to {RUSTDOC_EXTRA_PATH.relative_to(ROOT)}")
     return 0

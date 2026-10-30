@@ -82,6 +82,16 @@ jobs:
           else
             echo "shipped=false" >> "$GITHUB_OUTPUT"
           fi
+      # cargo doc runs the build scripts of the companion's GPUI dependencies, which need these system libraries on
+      # Linux. Same list as the companion's own CI.
+      - name: install the companion's Linux build dependencies
+        if: steps.companion.outputs.shipped == 'true'
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y -q \
+            gcc g++ libasound2-dev libfontconfig-dev libgit2-dev libglib2.0-dev libssl-dev libva-dev libvulkan1 \
+            libwayland-dev libx11-xcb-dev libxkbcommon-x11-dev libzstd-dev make cmake clang lld llvm jq curl \
+            gettext-base elfutils libsqlite3-dev build-essential pipewire xdg-desktop-portal libstdc++-14-dev
       - if: steps.companion.outputs.shipped == 'true'
         uses: dtolnay/rust-toolchain@stable
       - if: steps.companion.outputs.shipped == 'true'

@@ -63,7 +63,7 @@
       "title": "Companion app",
       "summary": "A native tray app for Windows, macOS and Linux that syncs raid nights to the site and keeps the addon up to date.",
       "readme_path": "README.md",
-      "shipped": false,
+      "shipped": true,
       "changelog": {
         "path": "CHANGELOG.md"
       },

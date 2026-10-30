@@ -15,7 +15,7 @@ plain words.
   reference and data-model pages; `generate_bot_commands.py` reads the bot's slash commands with
   `ast`; `generate_addon_reference.py` reads the addon's `/sq` commands from its Lua source and
   the SQX1/SQI1 formats from the website's own pydantic models; `generate_companion_reference.py`
-  runs `cargo doc --no-deps` once the companion app ships; `generate_changelogs.py` uses a repo's
+  runs `cargo doc --no-deps` over the companion app; `generate_changelogs.py` uses a repo's
   own `CHANGELOG.md` or runs `git-cliff` over its commit history with `scripts/cliff.toml`.
 - `source/`: the Sphinx source. `conf.py` (theme options, nav, the per-page repo-card/edit-link
   hook), `index.md` (the landing page), `members/`, `officers/`, `developers/`, `reference/`,
@@ -32,7 +32,7 @@ plain words.
 
 - `make install`, then `make docs` (clones/updates sources, generates every page, builds with
   `-W` so warnings fail the build). `make serve` for live reload while writing. Needs `uv`,
-  `git-cliff`, and (once the companion app ships) `cargo` on `PATH`.
+  `git-cliff`, and `cargo` on `PATH`.
 - Dependency versions in `pyproject.toml` are pinned exactly (`==`), not ranged; `astroid` is
   pinned below 4 because `sphinx-autoapi==3.6.0` doesn't support astroid 4's `AstroidBuilder` API
   change yet. Bump both together, deliberately, after checking `sphinx-autoapi`'s changelog.
@@ -76,8 +76,8 @@ instead of at the daily 06:17 UTC build.
   build time. If that fetch fails, or the schema has no operations, the build must fail too
   (`generate_api_reference.py` exits non-zero) rather than shipping a stale or empty reference.
   The same "fail loudly, never ship empty" rule applies to every other generator for a `shipped:
-  true` app; `shipped: false` (companion, until it ships) is the one case that gets an honest
-  placeholder instead of a failure.
+  true` app; `shipped: false` (an app whose repo has no code yet) is the one case that gets an
+  honest placeholder instead of a failure.
 - The changelog generator needs each repo's full git history (`git-cliff` walks commit tags), so
   `fetch_sources.py` clones full and CI's `actions/checkout` for each source uses
   `fetch-depth: 0`. Don't reintroduce a shallow clone without also dropping changelog generation.

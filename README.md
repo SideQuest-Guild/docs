@@ -13,7 +13,7 @@ history, so the docs can't drift out of sync with the code.
 
 ## Building it
 
-You need [uv](https://docs.astral.sh/uv/). `git-cliff` and, if the companion app has shipped,
+You need [uv](https://docs.astral.sh/uv/). `git-cliff` and
 `cargo` need to be on `PATH` too (installed automatically in CI).
 
 ```sh
@@ -60,7 +60,7 @@ make serve
 | `scripts/generate_api_reference.py` | Fetches the website's live OpenAPI schema and writes its HTTP reference and data-model pages, grouped by `x-tagGroups` when present. |
 | `scripts/generate_bot_commands.py` | Reads the bot's slash commands from its source with `ast` (no import needed). |
 | `scripts/generate_addon_reference.py` | Reads the addon's `/sq` commands from its Lua source, and the SQX1/SQI1 formats from the website's own pydantic models. |
-| `scripts/generate_companion_reference.py` | Runs `cargo doc --no-deps` over the companion app once it has shipped; writes an honest placeholder until then. |
+| `scripts/generate_companion_reference.py` | Runs `cargo doc --no-deps` over the companion app and links its Rust reference. |
 | `scripts/generate_changelogs.py` | Uses a repo's own `CHANGELOG.md` if it has one, otherwise runs `git-cliff` over its commit history with `scripts/cliff.toml`. |
 | `source/` | The Sphinx source: `index.md` (the landing page), `members/`, `officers/`, `developers/`, `reference/`, `changelog/`, `contributing/`. Anything under a `_generated/` folder is written by a script and gitignored; don't edit it by hand. |
 | `source/conf.py` | Theme options, the nav/sidebar, and the `html-page-context` hook that sets the repo card and "Edit this page" link per page. |
