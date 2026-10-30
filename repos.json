@@ -5,21 +5,73 @@
       "repo": "SideQuest-Guild/website",
       "title": "Website & API",
       "summary": "The Astro site and the Litestar API that runs sidequest-guild.com.",
-      "readme_path": "README.md"
+      "readme_path": "README.md",
+      "shipped": true,
+      "changelog": {
+        "path": "CHANGELOG.md"
+      },
+      "reference": {
+        "http": {
+          "openapi_url": "https://sidequest-guild.com/schema/openapi.json",
+          "live_url": "https://sidequest-guild.com/api-reference/"
+        },
+        "python": {
+          "dirs": ["api/src", "packages/sidequest-common/src"]
+        }
+      }
     },
     {
       "id": "bot",
       "repo": "SideQuest-Guild/bot",
       "title": "Discord Bot",
       "summary": "Game Master, the discord.py bot that runs events, roles and moderation in Discord.",
-      "readme_path": "README.md"
+      "readme_path": "README.md",
+      "shipped": true,
+      "changelog": {
+        "path": "CHANGELOG.md"
+      },
+      "reference": {
+        "python": {
+          "dirs": ["src/sidequest_bot"]
+        },
+        "commands": {
+          "src_dir": "src/sidequest_bot"
+        }
+      }
     },
     {
       "id": "addon",
       "repo": "SideQuest-Guild/addon",
       "title": "WoW Addon",
       "summary": "The in-game addon for the roster, raid sign-ups, loot points and raid nights, plus the sidequest-sync uploader.",
-      "readme_path": "README.md"
+      "readme_path": "README.md",
+      "shipped": true,
+      "changelog": {
+        "path": "CHANGELOG.md"
+      },
+      "reference": {
+        "lua": {
+          "src_dir": "SideQuest",
+          "core_file": "Core.lua",
+          "codec_file": "Codec.lua"
+        }
+      }
+    },
+    {
+      "id": "companion",
+      "repo": "SideQuest-Guild/companion",
+      "title": "Companion app",
+      "summary": "A native tray app for Windows, macOS and Linux that syncs raid nights to the site and keeps the addon up to date.",
+      "readme_path": "README.md",
+      "shipped": false,
+      "changelog": {
+        "path": "CHANGELOG.md"
+      },
+      "reference": {
+        "rust": {
+          "src_dir": "src"
+        }
+      }
     }
   ]
 }

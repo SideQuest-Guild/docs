@@ -40,7 +40,8 @@ def rewrite_path(path: str, repo: str, kind: str) -> str:
     if "#" in path:
         clean, _, anchor = path.partition("#")
         anchor = f"#{anchor}"
-    clean = clean.lstrip("./")
+    if clean.startswith("./"):
+        clean = clean[2:]
     if not clean:
         return path
     if kind == "image":
@@ -67,8 +68,17 @@ def main() -> int:
     for source in data["sources"]:
         readme = SOURCES_DIR / source["id"] / source["readme_path"]
         if not readme.exists():
-            print(f"error: {readme} not found, run `make fetch` first", file=sys.stderr)
-            return 1
+            if source.get("shipped", True):
+                print(f"error: {readme} not found, run `make fetch` first", file=sys.stderr)
+                return 1
+            out = OUT_DIR / f"{source['id']}.md"
+            out.write_text(
+                f"The **{source['title']}** repo (`{source['repo']}`) has no code in it yet, "
+                "so there's no README to show here. Check the repo directly for its current "
+                "state.\n"
+            )
+            print(f"wrote {out.relative_to(ROOT)} (placeholder, repo not shipped yet)")
+            continue
         rewritten = rewrite_readme(readme.read_text(), source["repo"])
         out = OUT_DIR / f"{source['id']}.md"
         out.write_text(rewritten)

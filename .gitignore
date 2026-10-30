@@ -1,8 +1,16 @@
 .venv/
 .sources/
 _build/
+source/_extra_rustdoc/
 source/developers/_generated/
-source/api/_generated/
+source/reference/_generated/
+source/reference/*/_generated/
+source/reference/*/*/_generated/
+source/changelog/_generated/
 __pycache__/
 *.pyc
 .DS_Store
+
+# Large source PNG for generated art; keep the prompt + the converted
+# AVIF/WebP crops that pages actually load.
+source/_static/art/*.png

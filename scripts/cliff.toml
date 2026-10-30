@@ -1,0 +1,34 @@
+# Shared git-cliff config for repos that don't ship their own CHANGELOG.md.
+# Mirrors the addon's own cliff.toml: feat/fix/perf only, grouped by release
+# tag, "Unreleased" first.
+
+[changelog]
+header = ""
+body = """
+{% if version %}\
+## {{ version }} ({{ timestamp | date(format="%Y-%m-%d") }})
+{% else %}\
+## Unreleased
+{% endif %}\
+{% for group, commits in commits | group_by(attribute="group") %}
+### {{ group | striptags | trim }}
+
+{% for commit in commits %}\
+- {{ commit.message | split(pat="\n") | first | upper_first | trim }}
+{% endfor %}\
+{% endfor %}
+"""
+trim = true
+footer = ""
+
+[git]
+conventional_commits = true
+filter_unconventional = true
+commit_parsers = [
+  { message = "^feat", group = "<!-- 0 -->New" },
+  { message = "^fix", group = "<!-- 1 -->Fixed" },
+  { message = "^perf", group = "<!-- 2 -->Faster" },
+  { message = ".*", skip = true },
+]
+tag_pattern = "v[0-9].*"
+sort_commits = "oldest"

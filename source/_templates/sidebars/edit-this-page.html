@@ -1,0 +1,10 @@
+{#- Overrides shibuya's sidebars/edit-this-page.html: its built-in edit_source_link
+    is baked once (at builder-inited) from the static html_context and can't vary
+    per page, so conf.py sets sq_edit_url/sq_edit_label per page instead (handwritten
+    pages point at this repo, generated README pages point at the source repo's
+    README, generated reference pages set neither and get no link). -#}
+{%- if sq_edit_url -%}
+<div class="edit-this-page">
+  <a href="{{ sq_edit_url }}">{{ sq_edit_label or _("Edit this page") }}</a>
+</div>
+{%- endif -%}

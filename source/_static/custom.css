@@ -1,25 +1,420 @@
-/* SideQuest Guild brand colors, lifted from website/src/styles/citadel.css and site.css. */
+/* SideQuest Guild docs theme: "Library of the citadel".
+   Brand tokens lifted from website/website/src/styles/{site,citadel}.css and DESIGN.md.
+   Dark mode is the guild's night blue + gold + ivory; light mode is a readable
+   parchment with navy ink and gold accents. Fonts are self-hosted from the
+   website repo. Square corners everywhere, per the site's No-Box-Shadow and
+   no-border-radius rules. */
+
+@font-face {
+  font-family: "Libertinus Serif Display";
+  src: url("fonts/LibertinusSerifDisplay.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "EB Garamond";
+  src: url("fonts/EBGaramond.woff2") format("woff2");
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "EB Garamond";
+  src: url("fonts/EBGaramond-italic.woff2") format("woff2");
+  font-weight: 400 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  --sy-f-heading: "Libertinus Serif Display", Georgia, serif;
+  --sy-f-text: "EB Garamond", Garamond, Georgia, serif;
+  --sy-f-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+
+  --sq-gold: #d8ab5c;
+  --sq-gold-deep: #a88449;
+  --sq-flavor: #ffd36a;
+  --sq-error: #e0a479;
+}
 
 html[data-accent-color="gold"] {
-  --accent-9: #d8ab5c;
+  --accent-9: var(--sq-gold);
   --accent-a9: rgba(216, 171, 92, 0.81);
   --accent-a11: rgba(216, 171, 92, 0.92);
+  --accent-10: var(--sq-gold-deep);
+  --accent-11: var(--sq-gold-deep);
+  --accent-12: #3a2c12;
 }
 
+/* -- Dark mode: the guild's night ----------------------------------------- */
 html.dark {
   --sy-c-background: #0a0f1a;
+  --sy-c-background-contrast: rgba(196, 205, 221, 0.08);
+  --sy-c-background-dropback: rgba(10, 15, 26, 0.86);
+  --sy-c-surface: #101a2c;
+  --sy-c-overlay: rgba(255, 255, 255, 0.04);
   --sy-c-foot-background: #101a2c;
   --sy-c-foot-divider: #18253d;
+  --sy-c-foot-text: #96a2b8;
   --sy-c-border: #18253d;
-  --sy-c-divider: #18253d;
+  --sy-c-divider: rgba(150, 172, 210, 0.16);
   --sy-c-heading: #f2efe9;
   --sy-c-text: #cfcac1;
+  --sy-c-light: #96a2b8;
   --sy-c-bold: #f2efe9;
-  --sy-c-link: #d8ab5c;
-  --sy-c-link-hover: #a88449;
+  --sy-c-link: var(--sq-gold);
+  --sy-c-link-hover: #ffd36a;
+  --sy-c-banner: #cfcac1;
+  --sy-c-banner-bg: #18253d;
+  color-scheme: dark;
 }
 
+/* -- Light mode: parchment, navy ink, gold accents ------------------------ */
 html.light {
-  --sy-c-link: #a88449;
-  --sy-c-link-hover: #d8ab5c;
+  --sy-c-background: #f6f1e6;
+  --sy-c-background-contrast: rgba(23, 33, 56, 0.06);
+  --sy-c-background-dropback: rgba(246, 241, 230, 0.9);
+  --sy-c-surface: #efe7d6;
+  --sy-c-overlay: rgba(23, 33, 56, 0.03);
+  --sy-c-foot-background: #efe7d6;
+  --sy-c-foot-divider: #ddd0b4;
+  --sy-c-foot-text: #4a4538;
+  --sy-c-border: #ddd0b4;
+  --sy-c-divider: rgba(90, 76, 46, 0.18);
+  --sy-c-heading: #1a2338;
+  --sy-c-text: #2c2a22;
+  --sy-c-light: #5a5540;
+  --sy-c-bold: #1a2338;
+  /* Darker gold than dark mode: --sq-gold-deep on parchment is only 3:1, under AA for text. */
+  --sy-c-link: #7a5a1f;
+  --sy-c-link-hover: #5c4313;
+  --sy-c-banner: #2c2a22;
+  --sy-c-banner-bg: #efe7d6;
+  color-scheme: light;
+}
+
+/* -- Square corners, no shadows, per the site's design system ------------- */
+.sy-head,
+.sy-foot,
+.yue :is(table, pre, .admonition, .table-wrapper, blockquote, img, .sd-card, .sd-dropdown, .sd-tab-set),
+button,
+input,
+select,
+.js-menu,
+.sy-head-brand img,
+.repo-stats,
+.edit-this-page a,
+code,
+.sq-changelog-pill {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* -- Typography ------------------------------------------------------------ */
+.yue h1,
+.yue h2,
+.yue h3,
+.yue h4,
+.yue h5,
+.yue h6,
+.sy-head-brand strong {
+  font-family: var(--sy-f-heading);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+.yue h1 {
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--sy-c-divider);
+  padding-bottom: 0.5em;
+}
+
+.sy-head-brand strong {
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+}
+
+/* -- Links ------------------------------------------------------------------ */
+.yue a {
+  text-decoration-color: color-mix(in srgb, var(--sy-c-link) 45%, transparent);
+}
+.yue a:hover {
+  color: var(--sy-c-link-hover);
+}
+
+/* -- Code blocks: readable in both modes ------------------------------------ */
+.yue pre,
+.yue code {
+  font-family: var(--sy-f-mono);
+}
+html.dark .yue :not(pre) > code {
+  background: rgba(216, 171, 92, 0.1);
+  color: var(--sq-flavor);
+  border: 1px solid rgba(216, 171, 92, 0.22);
+}
+html.light .yue :not(pre) > code {
+  background: rgba(168, 132, 73, 0.1);
+  color: #5c3f16;
+  border: 1px solid rgba(168, 132, 73, 0.25);
+}
+html.dark .yue pre {
+  background: #090d16;
+  border: 1px solid var(--sy-c-border);
+}
+html.light .yue pre {
+  background: #fbf7ee;
+  border: 1px solid var(--sy-c-border);
+}
+
+/* -- Admonitions: note/tip/warning/danger restyled to match the citadel ---- */
+.yue .admonition {
+  border: 1px solid var(--sy-c-border);
+  border-left: 3px solid var(--sq-gold-deep);
+  background: var(--sy-c-overlay);
+}
+.yue .admonition.note,
+.yue .admonition.tip {
+  border-left-color: var(--sq-gold);
+}
+.yue .admonition.warning {
+  border-left-color: var(--sq-error);
+}
+.yue .admonition.danger,
+.yue .admonition.error {
+  border-left-color: #c4432f;
+}
+.yue .admonition-title {
+  font-family: var(--sy-f-heading);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+/* -- sphinx-design dropdowns/cards, same square-corner treatment ----------- */
+.sd-dropdown summary.sd-summary-title {
+  font-family: var(--sy-f-heading);
+  letter-spacing: 0.04em;
+}
+.sd-card {
+  border: 1px solid var(--sy-c-border) !important;
+  background: var(--sy-c-overlay) !important;
+}
+
+/* -- Left sidebar: Changelog pill next to each app's Develop entry --------- */
+.sq-changelog-pill {
+  display: inline-block;
+  margin-left: 0.5em;
+  padding: 0 0.45em;
+  font-family: var(--sy-f-text);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.5;
+  color: var(--sy-c-light);
+  border: 1px solid var(--sy-c-border);
+  vertical-align: middle;
+  text-decoration: none !important;
+}
+.sq-changelog-pill:hover {
+  color: var(--sq-gold);
+  border-color: var(--sq-gold-deep);
+}
+
+/* -- Repo card / edit-this-page sidebar ------------------------------------ */
+.repo-stats {
+  border: 1px solid var(--sy-c-border);
+  padding: 0.5rem;
+}
+.edit-this-page a {
+  border: 1px solid var(--sy-c-border);
+  display: block;
+  padding: 0.5rem 0.75rem;
+  text-align: center;
+  font-family: var(--sy-f-text);
+  letter-spacing: 0.04em;
+}
+.edit-this-page a:hover {
+  border-color: var(--sq-gold-deep);
+  color: var(--sq-gold);
+}
+
+/* -- Landing: the library of the citadel ---------------------------------- */
+/* The page title stays for search engines and screen readers; the painted hero shows it. */
+.yue section:first-of-type:has(.sq-hero) > h1:first-child {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  margin: 0;
+}
+body {
+  overflow-x: clip;
+}
+
+.sq-hero {
+  position: relative;
+  width: 100vw;
+  margin: var(--sq-hero-pull, -3rem) 0 3rem calc(50% - 50vw);
+  min-height: clamp(420px, 62vh, 680px);
+  display: grid;
+  place-items: end center;
+  overflow: hidden;
+  background: #060a12;
+  isolation: isolate;
+}
+.sq-hero picture,
+.sq-hero img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 40%;
+  z-index: -2;
+}
+.sq-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(60% 55% at 50% 62%, rgba(6, 10, 18, 0.62), rgba(6, 10, 18, 0) 72%),
+    linear-gradient(to bottom, rgba(6, 10, 18, 0.35) 0%, rgba(6, 10, 18, 0) 28%, rgba(6, 10, 18, 0.15) 60%, var(--sy-c-background) 100%);
+}
+.sq-hero-content {
+  width: min(44rem, 100% - 2.5rem);
+  padding: 0 0 clamp(2.5rem, 7vh, 4.5rem);
+  text-align: center;
+}
+.sq-hero-eyebrow {
+  margin: 0 0 0.9rem;
+  font-family: var(--sy-f-text);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: #e7c98a;
+  text-shadow: 0 1px 2px rgba(4, 8, 16, 0.9);
+}
+.sq-hero-title {
+  margin: 0 0 1rem;
+  font-family: var(--sy-f-heading);
+  font-weight: 400;
+  font-size: clamp(1.9rem, 5.2vw, 3.6rem);
+  line-height: 1.05;
+  letter-spacing: 0.32em;
+  padding-left: 0.32em;
+  text-transform: uppercase;
+  color: #f2efe9;
+  text-shadow: 0 2px 4px rgba(4, 8, 16, 0.9), 0 0 30px rgba(4, 8, 16, 0.8);
+}
+/* A thin gold rule under the title, like the site's chamber headings. */
+.sq-hero-title::after {
+  content: "";
+  display: block;
+  width: min(14rem, 50%);
+  height: 1px;
+  margin: 1.1rem auto 0;
+  background: linear-gradient(90deg, transparent, var(--sq-gold), transparent);
+}
+.sq-hero-lede {
+  margin: 0 auto 1.6rem;
+  max-width: 32em;
+  font-family: var(--sy-f-text);
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #e4ded3;
+  text-shadow: 0 1px 3px rgba(4, 8, 16, 0.95);
+}
+.sq-hero-search {
+  max-width: 30rem;
+  margin: 0 auto;
+}
+.sq-hero-search input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font: 1.05rem var(--sy-f-text);
+  color: #f2efe9;
+  background: rgba(10, 15, 26, 0.78);
+  border: 1px solid rgba(216, 171, 92, 0.7);
+  backdrop-filter: blur(6px);
+}
+.sq-hero-search input::placeholder {
+  color: #b9b2a5;
+}
+.sq-hero-search input:focus-visible {
+  outline: 2px solid var(--sq-gold);
+  outline-offset: 2px;
+}
+/* Candlelight: a slow, small change in warmth. Off for anyone who asks for less motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .sq-hero img {
+    animation: sq-candle 9s ease-in-out infinite alternate;
+  }
+}
+@keyframes sq-candle {
+  from {
+    filter: brightness(0.96) saturate(0.97);
+  }
+  to {
+    filter: brightness(1.05) saturate(1.06);
+  }
+}
+
+/* Doors and app cards: sphinx-design cards in the site's chamber style. */
+.yue .sq-doors,
+.yue .sq-apps {
+  margin: 1.5rem 0 3rem;
+}
+.yue .sd-card.sq-door,
+.yue .sd-card.sq-app {
+  height: 100%;
+  border: 1px solid var(--sy-c-border);
+  background: var(--sy-c-surface);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.yue .sd-card.sq-door:hover {
+  border-color: var(--sq-gold-deep);
+  transform: translateY(-2px);
+}
+.yue .sd-card.sq-door .sd-card-body,
+.yue .sd-card.sq-app .sd-card-body {
+  padding: 1.4rem 1.4rem 1.2rem;
+}
+.yue .sq-door .sd-card-title,
+.yue .sq-app .sd-card-title {
+  margin-bottom: 0.55rem;
+  font-family: var(--sy-f-heading);
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--sy-c-heading);
+}
+/* A small gold diamond before each door title, the site's heading ornament. */
+.yue .sq-door .sd-card-title::before {
+  content: "";
+  display: inline-block;
+  width: 0.45em;
+  height: 0.45em;
+  margin: 0 0.6em 0.12em 0;
+  border: 1px solid var(--sq-gold);
+  transform: rotate(45deg);
+}
+.yue .sq-door .sd-card-text,
+.yue .sq-app .sd-card-text {
+  color: var(--sy-c-text);
+  font-size: 1.02rem;
+  line-height: 1.5;
+}
+.yue .sq-app .sd-card-text:last-child {
+  margin-top: 0.8rem;
+  font-size: 0.95rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  .yue .sd-card.sq-door:hover {
+    transform: none;
+  }
 }

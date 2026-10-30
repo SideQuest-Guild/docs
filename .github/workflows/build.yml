@@ -35,10 +35,14 @@ jobs:
       matrix:
         source: ${{ fromJson(needs.discover-sources.outputs.sources) }}
     steps:
+      # fetch-depth: 0 pulls full history, not just the tip commit: the
+      # changelog generator runs git-cliff over each repo's full Conventional
+      # Commit history, which a shallow checkout can't give it.
       - uses: actions/checkout@v5
         with:
           repository: ${{ matrix.source.repo }}
           path: .sources/${{ matrix.source.id }}
+          fetch-depth: 0
       - uses: actions/upload-artifact@v4
         with:
           name: source-${{ matrix.source.id }}
@@ -66,8 +70,30 @@ jobs:
         with:
           enable-cache: true
       - run: uv sync
+      - name: install git-cliff
+        uses: taiki-e/install-action@v2
+        with:
+          tool: git-cliff
+      - name: check whether the companion app has shipped
+        id: companion
+        run: |
+          if [ -f .sources/companion/Cargo.toml ]; then
+            echo "shipped=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "shipped=false" >> "$GITHUB_OUTPUT"
+          fi
+      - if: steps.companion.outputs.shipped == 'true'
+        uses: dtolnay/rust-toolchain@stable
+      - if: steps.companion.outputs.shipped == 'true'
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: ".sources/companion -> target"
       - run: uv run python scripts/generate_developer_pages.py
       - run: uv run python scripts/generate_api_reference.py
+      - run: uv run python scripts/generate_bot_commands.py
+      - run: uv run python scripts/generate_addon_reference.py
+      - run: uv run python scripts/generate_companion_reference.py
+      - run: uv run python scripts/generate_changelogs.py
       - run: uv run sphinx-build -b html source _build/html -W
       - uses: actions/upload-pages-artifact@v3
         with:
