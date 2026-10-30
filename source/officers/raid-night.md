@@ -54,4 +54,4 @@ next login picks it up with nothing to copy or paste. Once one officer imports, 
 online gets the new points.
 
 See the [addon's developer page](../developers/addon/index.md) for the full raid night walkthrough and
-loot bidding rules, and the [companion's developer page](../developers/companion/index.md) for setup.
+loot bidding rules, and [use the companion app](../members/companion.md) to set it up.

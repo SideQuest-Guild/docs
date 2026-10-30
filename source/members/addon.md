@@ -12,6 +12,8 @@ loot points. You can also sign up for raids and ask for standby from inside the 
 2. Check you have `Interface/AddOns/SideQuest/SideQuest.toc`.
 3. In game, type `/sq` to open the window.
 
+The [companion app](companion.md) can also install the addon for you and keep it up to date.
+
 :::{note}
 CurseForge and GitHub serve the same signed zip. See the addon's
 [SECURITY.md](https://github.com/SideQuest-Guild/addon/blob/main/SECURITY.md) to check a
