@@ -9,10 +9,7 @@ on:
   repository_dispatch:
     types: [docs]
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+permissions: {}
 
 concurrency:
   group: pages
@@ -21,16 +18,22 @@ concurrency:
 jobs:
   discover-sources:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     outputs:
       sources: ${{ steps.read.outputs.sources }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false
       - id: read
         run: echo "sources=$(jq -c '.sources' repos.json)" >> "$GITHUB_OUTPUT"
 
   fetch-sources:
     needs: discover-sources
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     strategy:
       matrix:
         source: ${{ fromJson(needs.discover-sources.outputs.sources) }}
@@ -38,12 +41,14 @@ jobs:
       # fetch-depth: 0 pulls full history, not just the tip commit: the
       # changelog generator runs git-cliff over each repo's full Conventional
       # Commit history, which a shallow checkout can't give it.
-      - uses: actions/checkout@v5
+      # persist-credentials: false keeps the job's token out of .git/config, which is uploaded below.
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
         with:
           repository: ${{ matrix.source.repo }}
           path: .sources/${{ matrix.source.id }}
           fetch-depth: 0
-      - uses: actions/upload-artifact@v4
+          persist-credentials: false
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: source-${{ matrix.source.id }}
           path: .sources/${{ matrix.source.id }}
@@ -52,9 +57,13 @@ jobs:
   build:
     needs: fetch-sources
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/download-artifact@v4
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
         with:
           pattern: source-*
           path: .sources
@@ -66,12 +75,12 @@ jobs:
             id="${dir#.sources/source-}"
             mv "$dir" ".sources/$id"
           done
-      - uses: astral-sh/setup-uv@v5
+      - uses: astral-sh/setup-uv@d4b2f3b6ecc6e67c4457f6d3e41ec42d3d0fcb86 # v5.4.2
         with:
           enable-cache: true
       - run: uv sync
       - name: install git-cliff
-        uses: taiki-e/install-action@v2
+        uses: taiki-e/install-action@68a389c788b2cd04016ce8c80ee23b80d2ab3d68 # v2.88.1
         with:
           tool: git-cliff
       - name: check whether the companion app has shipped
@@ -93,9 +102,11 @@ jobs:
             libwayland-dev libx11-xcb-dev libxkbcommon-x11-dev libzstd-dev make cmake clang lld llvm jq curl \
             gettext-base elfutils libsqlite3-dev build-essential pipewire xdg-desktop-portal libstdc++-14-dev
       - if: steps.companion.outputs.shipped == 'true'
-        uses: dtolnay/rust-toolchain@stable
+        uses: dtolnay/rust-toolchain@683b588c487a69d01f6c6ddf40f036ff682cc2c8 # v1
+        with:
+          toolchain: stable
       - if: steps.companion.outputs.shipped == 'true'
-        uses: Swatinem/rust-cache@v2
+        uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0 # v2.9.3
         with:
           workspaces: ".sources/companion -> target"
       - run: uv run python scripts/generate_developer_pages.py
@@ -105,16 +116,19 @@ jobs:
       - run: uv run python scripts/generate_companion_reference.py
       - run: uv run python scripts/generate_changelogs.py
       - run: uv run sphinx-build -b html source _build/html -W
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
         with:
           path: _build/html
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write # deploy-pages proves the deployment came from this workflow
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
