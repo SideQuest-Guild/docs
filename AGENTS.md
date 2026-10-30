@@ -42,6 +42,14 @@ plain words.
 - This repo's `AGENTS.md` is covered by the global gitignore (it ignores `AGENTS.md`
   everywhere), so add it with `git add -f AGENTS.md`.
 
+## Releases
+
+This repo has no releases: every push to `main` publishes the site. The changelog pages come
+from each app's `CHANGELOG.md`, which that app writes when it tags a release (see its
+`AGENTS.md`). If an app's changelog shows everything under "Unreleased", that app needs a
+release, not a fix here. After an app releases, `gh workflow run build.yml` shows it now
+instead of at the daily 06:17 UTC build.
+
 ## Writing guides
 
 - Plain words, short sentences, active voice, no jargon a common word would do instead, and no
