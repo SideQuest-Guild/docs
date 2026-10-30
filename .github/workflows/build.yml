@@ -43,7 +43,7 @@ jobs:
           repository: ${{ matrix.source.repo }}
           path: .sources/${{ matrix.source.id }}
           fetch-depth: 0
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: source-${{ matrix.source.id }}
           path: .sources/${{ matrix.source.id }}
