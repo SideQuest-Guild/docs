@@ -1,0 +1,19 @@
+[project]
+name = "sidequest-docs"
+version = "0.1.0"
+description = "Documentation for SideQuest, an Alliance guild on World of Warcraft: Forever"
+requires-python = ">=3.15,<4.0"
+license = { text = "MIT" }
+dependencies = [
+  "sphinx>=8.2",
+  "shibuya>=2025.9",
+  "myst-parser>=4.0",
+  "sphinxcontrib-mermaid>=1.0",
+  "httpx>=0.28",
+]
+
+[dependency-groups]
+dev = ["sphinx-autobuild>=2025.8"]
+
+[tool.uv]
+package = false

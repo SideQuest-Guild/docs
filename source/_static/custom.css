@@ -1,0 +1,25 @@
+/* SideQuest Guild brand colors, lifted from website/src/styles/citadel.css and site.css. */
+
+html[data-accent-color="gold"] {
+  --accent-9: #d8ab5c;
+  --accent-a9: rgba(216, 171, 92, 0.81);
+  --accent-a11: rgba(216, 171, 92, 0.92);
+}
+
+html.dark {
+  --sy-c-background: #0a0f1a;
+  --sy-c-foot-background: #101a2c;
+  --sy-c-foot-divider: #18253d;
+  --sy-c-border: #18253d;
+  --sy-c-divider: #18253d;
+  --sy-c-heading: #f2efe9;
+  --sy-c-text: #cfcac1;
+  --sy-c-bold: #f2efe9;
+  --sy-c-link: #d8ab5c;
+  --sy-c-link-hover: #a88449;
+}
+
+html.light {
+  --sy-c-link: #a88449;
+  --sy-c-link-hover: #d8ab5c;
+}

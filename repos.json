@@ -1,0 +1,25 @@
+{
+  "sources": [
+    {
+      "id": "website",
+      "repo": "SideQuest-Guild/website",
+      "title": "Website & API",
+      "summary": "The Astro site and the Litestar API that runs sidequest-guild.com.",
+      "readme_path": "README.md"
+    },
+    {
+      "id": "bot",
+      "repo": "SideQuest-Guild/bot",
+      "title": "Discord Bot",
+      "summary": "Game Master, the discord.py bot that runs events, roles and moderation in Discord.",
+      "readme_path": "README.md"
+    },
+    {
+      "id": "addon",
+      "repo": "SideQuest-Guild/addon",
+      "title": "WoW Addon",
+      "summary": "The in-game addon for the roster, raid sign-ups, loot points and raid nights, plus the sidequest-sync uploader.",
+      "readme_path": "README.md"
+    }
+  ]
+}

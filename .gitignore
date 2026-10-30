@@ -1,0 +1,8 @@
+.venv/
+.sources/
+_build/
+source/developers/_generated/
+source/api/_generated/
+__pycache__/
+*.pyc
+.DS_Store

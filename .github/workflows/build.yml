@@ -1,0 +1,84 @@
+name: Build and deploy docs
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+  schedule:
+    - cron: "17 6 * * *"
+  repository_dispatch:
+    types: [docs]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  discover-sources:
+    runs-on: ubuntu-latest
+    outputs:
+      sources: ${{ steps.read.outputs.sources }}
+    steps:
+      - uses: actions/checkout@v5
+      - id: read
+        run: echo "sources=$(jq -c '.sources' repos.json)" >> "$GITHUB_OUTPUT"
+
+  fetch-sources:
+    needs: discover-sources
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        source: ${{ fromJson(needs.discover-sources.outputs.sources) }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          repository: ${{ matrix.source.repo }}
+          path: .sources/${{ matrix.source.id }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: source-${{ matrix.source.id }}
+          path: .sources/${{ matrix.source.id }}
+          include-hidden-files: true
+
+  build:
+    needs: fetch-sources
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: source-*
+          path: .sources
+          merge-multiple: false
+      - name: flatten downloaded sources
+        run: |
+          set -eu
+          for dir in .sources/source-*; do
+            id="${dir#.sources/source-}"
+            mv "$dir" ".sources/$id"
+          done
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+      - run: uv sync
+      - run: uv run python scripts/generate_developer_pages.py
+      - run: uv run python scripts/generate_api_reference.py
+      - run: uv run sphinx-build -b html source _build/html -W
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _build/html
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
