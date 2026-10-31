@@ -3,7 +3,8 @@
 ## Tabs
 
 The window has one tab per task: You (your own points and next raid), Guild (the roster),
-Crafters (who can make what), Raids (sign-ups), Ledger (everyone's EP, GP and PR), and News.
+Crafters (who can make what), Market (who sells, buys and holds what), Raids (sign-ups), Ledger
+(everyone's EP, GP and PR), and News.
 Officers also get a gold **Console** tab with its own sub-tabs for running a raid night. See the
 [addon's own README](https://github.com/SideQuest-Guild/addon#for-members) for what each tab
 shows.
@@ -23,6 +24,18 @@ the item, its GP price, their own PR, and Main, Off and Pass buttons. Bids are r
 rule the site uses: main spec by PR, then off spec, then alts, then disenchant. Chase items,
 legendaries and crafted tier pieces are left out of automatic bidding for the loot council to
 decide by hand.
+
+## Guild directory
+
+Every member's addon keeps a record of its own character in five sections (professions, character
+basics, craft cooldowns, market, materials) and shares it on the guild channel. `Directory.lua`
+hashes each section, announces the hashes after a change (`DIR_V`), and answers requests for a
+newer section (`DIR_Q`, `DIR_R`); any client that holds a section can answer for an offline
+owner. A client that logs in asks for everyone's hashes (`DIR_LQ`, `DIR_L`) and catches up ten
+characters at a time. Newest wins everywhere, by the owner's timestamp. The Crafters and Market
+tabs and the item tooltip read from this store, and officers' exports carry all of it to the
+site. The full contract is the addon's
+[docs/directory.md](https://github.com/SideQuest-Guild/addon/blob/main/docs/directory.md).
 
 ## Export and import
 
