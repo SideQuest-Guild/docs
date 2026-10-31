@@ -418,3 +418,12 @@ body {
     transform: none;
   }
 }
+
+/* Icons (sphinx-iconify) sit on the text baseline in card titles and tab labels. */
+iconify-icon {
+  vertical-align: -0.125em;
+  margin-right: 0.35em;
+}
+.sq-notfound-search {
+  margin: 1.5rem auto;
+}

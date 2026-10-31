@@ -13,6 +13,9 @@ dependencies = [
   "sphinx-autoapi==3.6.0",
   "httpx==0.28.1",
   "astroid==3.3.11",
+  "sphinx-copybutton==0.5.2",
+  "sphinx-iconify==0.3.0",
+  "sphinx-notfound-page==1.1.0",
 ]
 
 [dependency-groups]

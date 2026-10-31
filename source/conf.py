@@ -1,10 +1,13 @@
 from __future__ import annotations
 
 import functools
+import hashlib
 import json
 import re
 import subprocess
 from pathlib import Path
+
+from docutils import nodes
 
 ROOT = Path(__file__).resolve().parent.parent
 SOURCES = ROOT / ".sources"
@@ -19,6 +22,13 @@ extensions = [
     "myst_parser",
     "sphinxcontrib.mermaid",
     "sphinx_design",
+    "sphinx_copybutton",
+    # :iconify:`set:name` icons (OS tabs, the app cards). The <iconify-icon> script and the icon data load from
+    # Iconify's CDN, like mermaid's from jsdelivr.
+    "sphinx_iconify",
+    # 404.html with root-relative links: GitHub Pages serves it at whatever path was missing, where the relative
+    # links Sphinx writes would break.
+    "notfound.extension",
     # A [source] link on every class and function in the Python reference, opening the highlighted module as it
     # was when the site was built. autoapi feeds viewcode the source it already parsed, so nothing is imported, but
     # only if viewcode loads first: autoapi checks for viewcode's events when it is set up.
@@ -26,6 +36,7 @@ extensions = [
     "autoapi.extension",
 ]
 viewcode_line_numbers = True
+notfound_urls_prefix = "/"
 
 source_suffix = {
     ".md": "markdown",
@@ -56,6 +67,49 @@ html_css_files = ["custom.css"]
 html_title = "SideQuest Guild Docs"
 html_baseurl = "https://docs.sidequest-guild.com/"
 html_favicon = "_static/logo.png"
+
+# -- Link previews ------------------------------------------------------------
+# Every page gets the large social card and a description, so a link pasted in Discord shows a picture and a line of
+# text. A page can set its own `description:` (or `cover:`/`image:`) in its front matter; otherwise the description
+# is the page's first real paragraph.
+
+SOCIAL_CARD = f"{html_baseurl}_static/social-card.jpg"
+DESCRIPTION_LIMIT = 160
+
+
+def _first_paragraph(doctree) -> str | None:
+    """The text of the page's first paragraph that isn't inside a note, table, list, or figure."""
+    skip = (nodes.Admonition, nodes.table, nodes.list_item, nodes.figure, nodes.field_list, nodes.sidebar)
+    for paragraph in doctree.findall(nodes.paragraph):
+        if any(isinstance(parent, skip) for parent in _ancestors(paragraph)):
+            continue
+        text = " ".join(paragraph.astext().split())
+        if len(text) >= 40:
+            return text
+    return None
+
+
+def _ancestors(node):
+    while (node := node.parent) is not None:
+        yield node
+
+
+def _shorten(text: str, limit: int = DESCRIPTION_LIMIT) -> str:
+    if len(text) <= limit:
+        return text
+    cut = text[: limit - 1].rsplit(" ", 1)[0].rstrip(",;:")
+    return f"{cut}…"
+
+
+def _social_meta(meta: dict | None, doctree) -> dict:
+    """The page's metadata with a description and the large social card filled in where the page set neither."""
+    meta = dict(meta or {})
+    if not meta.get("description") and doctree is not None and (text := _first_paragraph(doctree)):
+        meta["description"] = _shorten(text)
+    if not meta.get("cover") and not meta.get("image"):
+        meta["cover"] = SOCIAL_CARD
+    return meta
+
 
 # -- Edit this page / repo card -----------------------------------------------
 # Shibuya's built-in "Edit this page" link is baked once from the static
@@ -196,6 +250,7 @@ def _html_page_context(app, pagename, templatename, context, doctree):
     original_toctree = context.get("toctree")
     if pathto is not None and callable(original_toctree):
         context["toctree"] = _install_changelog_pills(pathto, original_toctree)
+    context["meta"] = _social_meta(context.get("meta"), doctree)
 
 
 def setup(app):
@@ -208,6 +263,11 @@ html_theme_options = {
     "light_logo": "_static/logo.png",
     "dark_logo": "_static/logo.png",
     "page_layout": "default",
+    # Root-relative link: the banner shows on every page, at every depth.
+    "announcement": (
+        'SideQuest Companion v0.1.0 is out: guild sync, addon updates and raid reminders in your tray. '
+        '<a href="/members/companion.html">Get the app</a>'
+    ),
     "github_url": "https://github.com/SideQuest-Guild",
     "discord_url": "https://discord.gg/nwncP7H9Hh",
     "nav_links": [
@@ -252,6 +312,8 @@ html_theme_options = {
     "toctree_titles_only": True,
     "globaltoc_expand_depth": 1,
 }
+# _templates/partials/banner.html remembers a closed banner under this key; new text means a new key, so it shows again.
+html_context["sq_announcement_key"] = hashlib.sha256(html_theme_options["announcement"].encode()).hexdigest()[:12]
 
 html_sidebars = {
     "**": [

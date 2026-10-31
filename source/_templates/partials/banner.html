@@ -1,0 +1,30 @@
+{#- Shibuya's banner, plus one thing it lacks: closing it stays closed. The close button only removes it from the
+    current page, so it came back on every click. The key is a hash of the announcement's text (conf.py), so a new
+    announcement shows again even to readers who closed the last one. -#}
+{%- if theme_announcement -%}
+  <div class="announcement">
+    <div class="announcement-inner">
+      <p>{{ theme_announcement }}</p>
+      <button class="announcement-close" aria-label="Close announcement">
+        <i class="i-lucide close"></i>
+      </button>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var banner = document.currentScript.previousElementSibling;
+      var key = "sq-announcement-closed";
+      try {
+        if (localStorage.getItem(key) === "{{ sq_announcement_key }}") {
+          banner.remove();
+          return;
+        }
+      } catch (e) {}
+      banner.querySelector(".announcement-close").addEventListener("click", function () {
+        try {
+          localStorage.setItem(key, "{{ sq_announcement_key }}");
+        } catch (e) {}
+      });
+    })();
+  </script>
+{%- endif %}

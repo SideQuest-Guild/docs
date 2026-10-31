@@ -1,5 +1,6 @@
 ---
 layout: landing
+description: The SideQuest guild handbook. How to join, raid, and run the guild on World of Warcraft Forever, and how to build the apps behind it.
 ---
 
 # SideQuest handbook
@@ -65,7 +66,7 @@ Run, test, and change the four apps.
 :gutter: 3
 :class-container: sq-apps
 
-:::{grid-item-card} Website and API
+:::{grid-item-card} {iconify}`game-icons:castle` Website and API
 :class-card: sq-app
 
 The site at sidequest-guild.com and the API behind it.
@@ -74,7 +75,7 @@ The site at sidequest-guild.com and the API behind it.
 {doc}`Changelog <changelog/website>` · [Repo](https://github.com/SideQuest-Guild/website)
 :::
 
-:::{grid-item-card} Discord bot
+:::{grid-item-card} {iconify}`simple-icons:discord` Discord bot
 :class-card: sq-app
 
 Game Master: event posts, sign-up buttons, roles, badges, and moderation.
@@ -83,7 +84,7 @@ Game Master: event posts, sign-up buttons, roles, badges, and moderation.
 {doc}`Changelog <changelog/bot>` · [Repo](https://github.com/SideQuest-Guild/bot)
 :::
 
-:::{grid-item-card} Addon
+:::{grid-item-card} {iconify}`game-icons:scroll-quill` Addon
 :class-card: sq-app
 
 The in-game window for the roster, raid sign-ups, loot points, and raid nights.
@@ -92,7 +93,7 @@ The in-game window for the roster, raid sign-ups, loot points, and raid nights.
 {doc}`Changelog <changelog/addon>` · [Repo](https://github.com/SideQuest-Guild/addon)
 :::
 
-:::{grid-item-card} Companion
+:::{grid-item-card} {iconify}`game-icons:dove` Companion
 :class-card: sq-app
 
 A tray app for Windows, macOS, and Linux that syncs the addon with the site.

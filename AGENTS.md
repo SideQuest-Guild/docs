@@ -66,6 +66,15 @@ instead of at the daily 06:17 UTC build.
 - Renown is the site's participation points; the EP/GP/PR system from the addon is SQL. Don't
   confuse the two.
 - Never name the guild's leaders.
+- Per-OS steps go in a sphinx-design `tab-set` with `:sync-group: os` and `:sync:` keys
+  `windows`, `macos`, `linux`, so a reader's pick follows them across pages. Label each tab with
+  its `{iconify}` icon (`mdi:microsoft-windows`, `mdi:apple`, `mdi:linux`).
+- Every page gets a link-preview description: the page's front matter `description:` if set,
+  otherwise its first real paragraph (`conf.py`, `_social_meta`). Write that first paragraph as a
+  summary of the page. Every page also gets `_static/social-card.jpg` as its preview image.
+- The banner across the top is `announcement` in `conf.py`'s `html_theme_options`. Keep it to
+  one line with a root-relative link (`/members/...`), and delete it when it's no longer news.
+  Changing its text shows it again to readers who closed the old one.
 
 ## Rules that bite
 
@@ -90,5 +99,8 @@ instead of at the daily 06:17 UTC build.
   "local id" check runs before the whole document is parsed, so it false-positives on any forward
   reference (a model that links to one defined later in the same page). `{ref}` resolves after
   the full build, so order doesn't matter.
+- `source/404.md` is served by GitHub Pages at whatever path was missing, so any link written in
+  it must be root-relative HTML (`<a href="/members/index.html">`). sphinx-notfound-page fixes
+  the theme's own links, but a relative Markdown link in the page body breaks one folder down.
 - Adding a future app is one entry in `repos.json` plus the stub pages described in `README.md`'s
   "Adding an app" section; don't add a placeholder page for one before its repo exists.

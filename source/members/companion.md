@@ -6,17 +6,40 @@ officers, carries raid nights to the site.
 
 ## Install it
 
-1. Go to [sidequest-guild.com/companion](https://sidequest-guild.com/companion/) and download
-   the file for your computer.
-2. Unzip it (on Linux, untar it) and open **SideQuest Companion**.
+Download it from [sidequest-guild.com/companion](https://sidequest-guild.com/companion/), then
+follow the steps for your computer. The app isn't signed with a paid certificate, so the first
+launch shows a warning; you only get past it once.
 
-The app isn't signed with a paid certificate, so the first launch shows a warning:
+::::{tab-set}
+:sync-group: os
 
-- **Mac:** right-click the app, choose **Open**, then **Open** again. On newer macOS versions,
-  open **System Settings**, go to **Privacy & Security** and select **Open Anyway**.
-- **Windows:** select **More info**, then **Run anyway**.
+:::{tab-item} {iconify}`mdi:microsoft-windows` Windows
+:sync: windows
 
-You only do this once.
+1. Download the **Windows** file (**ARM** if your PC has an Arm chip, such as a Snapdragon).
+2. Unzip it and open `sidequest-companion.exe`.
+3. When Windows warns you, select **More info**, then **Run anyway**.
+:::
+
+:::{tab-item} {iconify}`mdi:apple` macOS
+:sync: macos
+
+1. Download the **macOS** file. It works on Apple silicon and Intel Macs.
+2. Unzip it and move **SideQuest Companion** to your Applications folder.
+3. Right-click the app, choose **Open**, then **Open** again. On newer macOS versions, open
+   **System Settings**, go to **Privacy & Security** and select **Open Anyway**.
+:::
+
+:::{tab-item} {iconify}`mdi:linux` Linux
+:sync: linux
+
+1. Download the **Linux** file.
+2. Untar it anywhere and run `sidequest-companion`.
+3. To add it to your app launcher, copy `sidequest-companion.desktop` to
+   `~/.local/share/applications/` and fix its `Exec=` and `Icon=` paths to where you put the
+   app.
+:::
+::::
 
 ## Sign in
 

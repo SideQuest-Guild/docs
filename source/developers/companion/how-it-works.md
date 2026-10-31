@@ -28,10 +28,35 @@ their private calendar feed or the site's public events).
 
 ## Settings and logs
 
-| What | macOS | Windows | Linux |
-|---|---|---|---|
-| Settings | `~/Library/Application Support/com.sidequest-guild.companion/` | `%APPDATA%\SideQuest Guild\Companion\` | `~/.config/sidequest-companion/` |
-| Logs | `~/Library/Logs/com.sidequest-guild.companion/` | `%LOCALAPPDATA%\SideQuest Guild\Companion\logs\` | `~/.local/state/sidequest-companion/logs/` |
+`src/paths.rs` takes these from the `directories` crate. `settings.json` is in the settings
+folder; `state.json`, `history.json` and the daily logs are in the data folder.
+
+::::{tab-set}
+:sync-group: os
+
+:::{tab-item} {iconify}`mdi:microsoft-windows` Windows
+:sync: windows
+
+- Settings: `%APPDATA%\SideQuest Guild\SideQuest Companion\config\`
+- Data: `%APPDATA%\SideQuest Guild\SideQuest Companion\data\`
+- Logs: `%APPDATA%\SideQuest Guild\SideQuest Companion\data\logs\`
+:::
+
+:::{tab-item} {iconify}`mdi:apple` macOS
+:sync: macos
+
+- Settings and data: `~/Library/Application Support/com.SideQuest-Guild.SideQuest-Companion/`
+- Logs: `~/Library/Application Support/com.SideQuest-Guild.SideQuest-Companion/logs/`
+:::
+
+:::{tab-item} {iconify}`mdi:linux` Linux
+:sync: linux
+
+- Settings: `~/.config/sidequestcompanion/`
+- Data: `~/.local/share/sidequestcompanion/`
+- Logs: `~/.local/share/sidequestcompanion/logs/`
+:::
+::::
 
 The sync token and calendar URL never appear in these logs, even in a debug build. The token is
 kept in the OS keyring (service `com.sidequest-guild.companion`); if the keyring isn't available,
