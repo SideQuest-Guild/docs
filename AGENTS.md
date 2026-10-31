@@ -21,12 +21,16 @@ plain words.
   hook), `index.md` (the landing page), `members/`, `officers/`, `developers/`, `reference/`,
   `changelog/`, `contributing/`. Anything under a `_generated/` folder is written by a script and
   gitignored; don't edit it by hand. `reference/_generated/python/` is written by
-  `sphinx-autoapi`, configured in `conf.py`, not a standalone script.
+  `sphinx-autoapi`, configured in `conf.py`, not a standalone script. `sphinx.ext.viewcode` gives
+  each documented object a `[source]` link to a highlighted copy of its module under `_modules/`.
+  It must stay above `autoapi.extension` in `extensions`: autoapi only feeds viewcode if viewcode's
+  events exist when autoapi loads, and otherwise the links silently vanish.
 - `source/_templates/sidebars/edit-this-page.html` overrides Shibuya's built-in version: Shibuya's
   own "Edit this page" link is baked once from the static `html_context` and can't vary per page,
   so `conf.py`'s `html-page-context` hook sets `sq_edit_url`/`sq_edit_label` per page instead
   (handwritten pages point here, generated README pages point at the source repo's README,
-  generated reference pages get no link).
+  `_modules/` source pages say "View on GitHub" and point at that file at the commit the build
+  documented, generated reference pages get no link).
 
 ## Working
 

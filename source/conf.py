@@ -1,7 +1,9 @@
 from __future__ import annotations
 
+import functools
 import json
 import re
+import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -17,8 +19,13 @@ extensions = [
     "myst_parser",
     "sphinxcontrib.mermaid",
     "sphinx_design",
+    # A [source] link on every class and function in the Python reference, opening the highlighted module as it
+    # was when the site was built. autoapi feeds viewcode the source it already parsed, so nothing is imported, but
+    # only if viewcode loads first: autoapi checks for viewcode's events when it is set up.
+    "sphinx.ext.viewcode",
     "autoapi.extension",
 ]
+viewcode_line_numbers = True
 
 source_suffix = {
     ".md": "markdown",
@@ -80,9 +87,40 @@ def _app_id_for_docname(docname: str) -> str | None:
     return None
 
 
+# Where the Python reference's source lives: (app id, folder inside that repo). autoapi documents these folders, and
+# the [source] pages viewcode writes for them (docnames under _modules/) link back to the file on GitHub.
+PYTHON_SOURCE_DIRS = [("website", "packages/sidequest-common/src"), ("bot", "src")]
+
+
+@functools.cache
+def _source_commit(app_id: str) -> str:
+    """The commit .sources/<app_id> is checked out at, so a GitHub link shows the code this build documented."""
+    try:
+        result = subprocess.run(
+            ["git", "rev-parse", "HEAD"], cwd=SOURCES / app_id, capture_output=True, text=True, check=True
+        )
+    except (OSError, subprocess.CalledProcessError):
+        return "main"
+    return result.stdout.strip()
+
+
+def _module_source(docname: str) -> tuple[str, str] | None:
+    """(app id, file path in its repo) for a viewcode page such as ``_modules/sidequest_bot/api_client``."""
+    if not docname.startswith("_modules/"):
+        return None
+    parts = docname.removeprefix("_modules/").split("/")
+    for app_id, folder in PYTHON_SOURCE_DIRS:
+        base = SOURCES / app_id / folder / Path(*parts)
+        for candidate in (base.with_suffix(".py"), base / "__init__.py"):
+            if candidate.is_file():
+                return app_id, candidate.relative_to(SOURCES / app_id).as_posix()
+    return None
+
+
 def _page_repo_context(docname: str) -> dict:
     """source_type/source_user/source_repo for the repo-stats card on this page."""
-    app_id = _app_id_for_docname(docname)
+    module = _module_source(docname)
+    app_id = module[0] if module else _app_id_for_docname(docname)
     if app_id is None:
         return {"source_type": "github", "source_user": "SideQuest-Guild", "source_repo": "docs"}
     owner, name = REPO_BY_ID[app_id]["repo"].split("/")
@@ -92,6 +130,16 @@ def _page_repo_context(docname: str) -> dict:
 def _edit_context(docname: str) -> dict:
     """sq_edit_url/sq_edit_label for the Edit this page sidebar link, or neither for generated pages."""
     app_id = _app_id_for_docname(docname)
+
+    # A highlighted source page links to the same file on GitHub, at the commit this build documented.
+    if docname.startswith("_modules/"):
+        if (module := _module_source(docname)) is None:
+            return {}
+        app_id, path = module
+        return {
+            "sq_edit_url": f"https://github.com/{REPO_BY_ID[app_id]['repo']}/blob/{_source_commit(app_id)}/{path}",
+            "sq_edit_label": "View on GitHub",
+        }
 
     # Generated reference pages: no edit link, there's nothing to hand-edit.
     if docname.startswith("reference/") and "_generated" in docname:
@@ -220,10 +268,7 @@ html_sidebars = {
 
 autoapi_type = "python"
 autoapi_root = "reference/_generated/python"
-autoapi_dirs = [
-    str(SOURCES / "website" / "packages" / "sidequest-common" / "src"),
-    str(SOURCES / "bot" / "src"),
-]
+autoapi_dirs = [str(SOURCES / app_id / folder) for app_id, folder in PYTHON_SOURCE_DIRS]
 autoapi_add_toctree_entry = False
 autoapi_keep_files = False
 autoapi_member_order = "groupwise"
