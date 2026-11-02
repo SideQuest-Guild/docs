@@ -39,6 +39,11 @@ Every event has a post in the Discord events forum with three buttons:
 - **Maybe**
 - **Can't**
 
+Every Monday the weekly board posts a card for each of that week's events with the same three
+buttons, plus **More info** (the event on the site) and **Thread** (its forum post). The card
+lists who's going, who might make it and who can't, and catches up within about 15 seconds of
+any change. For a raid or dungeon, Going is split into tanks, healers and DPS.
+
 For a raid or dungeon, the bot asks for your character, class and role the first time you use
 these buttons, then reuses them next time.
 

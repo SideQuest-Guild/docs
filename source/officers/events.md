@@ -39,6 +39,8 @@ sign-ups. To change every occurrence at once, edit the series instead of a singl
 
 :::{dropdown} What syncs to Discord?
 Each event gets a Discord event and a thread in the events forum with Going, Maybe and Can't
-buttons. Editing the title, time, location or status on the website updates both. Deleting an
-event in Discord only cancels it; the website keeps the record and its sign-ups.
+buttons. Editing the title, time, location or status on the website updates both, and the
+event's weekly board card if it has one. Cancelling an event marks its card cancelled and
+removes the buttons. Deleting an event in Discord only cancels it; the website keeps the record
+and its sign-ups.
 :::
