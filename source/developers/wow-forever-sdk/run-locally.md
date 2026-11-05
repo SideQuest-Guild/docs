@@ -11,7 +11,7 @@
 1. Clone the repo and install it:
 
    ```sh
-   git clone https://github.com/JacobCoffee/wow-forever-sdk
+   git clone https://github.com/SideQuest-Guild/wow-forever-sdk
    cd wow-forever-sdk
    make install
    ```
@@ -35,5 +35,5 @@
    uv run python -c "from wow import Client; print(Client().playable_classes.get(1).name)"
    ```
 
-The [usage guide](https://github.com/JacobCoffee/wow-forever-sdk/blob/main/docs/usage.md) shows each part of the
+The [usage guide](https://github.com/SideQuest-Guild/wow-forever-sdk/blob/main/docs/usage.md) shows each part of the
 client: regions, search, errors and raw access.

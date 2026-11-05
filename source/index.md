@@ -108,7 +108,7 @@ A tray app for Windows, macOS, and Linux that syncs the addon with the site.
 A typed Python client for the World of Warcraft: Forever Battle.net API.
 
 {doc}`Guide <developers/wow-forever-sdk/index>` · {doc}`Reference <reference/wow-forever-sdk/index>` ·
-{doc}`Changelog <changelog/wow-forever-sdk>` · [Repo](https://github.com/JacobCoffee/wow-forever-sdk)
+{doc}`Changelog <changelog/wow-forever-sdk>` · [Repo](https://github.com/SideQuest-Guild/wow-forever-sdk)
 :::
 ::::
 

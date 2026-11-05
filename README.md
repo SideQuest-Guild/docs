@@ -6,7 +6,7 @@ The documentation site for SideQuest, an Alliance guild on World of Warcraft: Fo
 [Discord bot](https://github.com/SideQuest-Guild/bot), the
 [in-game addon](https://github.com/SideQuest-Guild/addon), the
 [companion app](https://github.com/SideQuest-Guild/companion), and the
-[WoW Forever SDK](https://github.com/JacobCoffee/wow-forever-sdk).
+[WoW Forever SDK](https://github.com/SideQuest-Guild/wow-forever-sdk).
 
 This repo doesn't copy content from those repos. It pulls their READMEs in at build time and
 generates every reference and changelog from the apps' own live schema, source and commit

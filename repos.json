@@ -75,7 +75,7 @@
     },
     {
       "id": "wow-forever-sdk",
-      "repo": "JacobCoffee/wow-forever-sdk",
+      "repo": "SideQuest-Guild/wow-forever-sdk",
       "title": "WoW Forever SDK",
       "summary": "A typed Python client, sync and async, for the World of Warcraft: Forever Battle.net API.",
       "readme_path": "README.md",

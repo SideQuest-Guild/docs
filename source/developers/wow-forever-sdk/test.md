@@ -30,5 +30,5 @@ checks find it:
   credentials from {doc}`run-locally`, and it takes about 4 minutes.
 
 Run `make audit-models` after a game patch. The
-[development guide](https://github.com/JacobCoffee/wow-forever-sdk/blob/main/docs/development.md) gives the steps
+[development guide](https://github.com/SideQuest-Guild/wow-forever-sdk/blob/main/docs/development.md) gives the steps
 to fix a model.
