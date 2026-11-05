@@ -59,7 +59,7 @@ in **Settings**.
 | Addon updates | Tells you when a new SideQuest addon is out and installs it in one click. Turn on **Install updates automatically while WoW is closed** in **Settings** to skip the click. |
 | Event reminders | A notification 30 minutes before raids you've signed up for. In **Settings** you can pick every scheduled event instead, and which kinds: raids, dungeons, world bosses, leveling, PvP, socials, transmog and other events. The **Events** tab lists what's coming up. |
 | Sync now (officers) | Uploads any new raid night right away, and says whether it worked or that there was nothing new to send. |
-| App updates | Tells you when a new version of the app is out and installs it in one click. |
+| App updates | Installs new versions of the app on its own and restarts into them. Turn off **Install app updates automatically** in **Settings** to be asked first instead. |
 
 Officers also get automatic sync. See [run a raid night](../officers/raid-night.md).
 
