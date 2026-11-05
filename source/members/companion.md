@@ -49,8 +49,9 @@ The app shows nothing until you sign in, so people outside the guild see nothing
 2. Check the code in the browser matches the one in the app.
 3. Select **Authorize**. You need to be signed in to the site with Discord first.
 
-The app is now signed in. It finds your WoW folder on its own; if it picks the wrong one, set it
-in **Settings**.
+The app is now signed in. It finds your WoW folder on its own, wherever Battle.net installed it.
+If it can't, open **Settings → WoW Folders**, choose **Add folder** and pick your
+`World of Warcraft` folder.
 
 ## What you get
 
