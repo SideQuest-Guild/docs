@@ -1,7 +1,7 @@
 # Use the addon
 
-The in-game addon, **SideQuest**, shows the roster, who can craft what, upcoming raids and your
-loot points. You can also sign up for raids and ask for standby from inside the game.
+The in-game addon, **SideQuest**, shows the roster, who can craft what, upcoming events and your
+loot points. You can also sign up for events and ask for standby from inside the game.
 
 ## Install it
 
@@ -25,11 +25,11 @@ download came from the real repo.
 
 | Tab | What it shows |
 |---|---|
-| You | Your PR and where it ranks, your last four weeks of points, your next raid with Going, Maybe and Can't buttons, and who's online. |
+| You | Your PR and where it ranks, your last four weeks of points, your next event with Going, Maybe and Can't buttons, and who's online. |
 | Guild | The roster, with alts under their main. Search it, filter by class, rank or online, and whisper or invite from it. |
 | Crafters | Search a recipe or profession to see who can make it, online people first. Pick a profession to see every member who has it and their skill, or check who has Transmute, Mooncloth and other craft cooldowns ready. |
 | Market | What guildmates sell and want to buy, open requests for materials, and who holds an item. **Mine** lists and edits your own. |
-| Raids | Upcoming events, how many have signed up for each role, and your own answer. |
+| Events | Upcoming events, how many have signed up for each role, and your own answer. |
 | Ledger | Everyone's EP, GP and PR, then your own points history and loot. |
 | News | Guild announcements and recent activity. |
 

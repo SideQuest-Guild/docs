@@ -1,7 +1,7 @@
 # Use the companion app
 
 **SideQuest Companion** is a small app for Windows, macOS and Linux. It lives in your system
-tray (the menu bar on a Mac) and keeps the addon up to date, reminds you before raids, and, for
+tray (the menu bar on a Mac) and keeps the addon up to date, reminds you before guild events, and, for
 officers, carries raid nights to the site.
 
 ## Install it
@@ -57,7 +57,8 @@ in **Settings**.
 | Feature | What it does |
 |---|---|
 | Addon updates | Tells you when a new SideQuest addon is out and installs it in one click. Turn on **Install updates automatically while WoW is closed** in **Settings** to skip the click. |
-| Raid reminders | A notification 30 minutes before raids you've signed up for. In **Settings** you can pick every scheduled event instead, and which kinds of event. |
+| Event reminders | A notification 30 minutes before raids you've signed up for. In **Settings** you can pick every scheduled event instead, and which kinds: raids, dungeons, world bosses, leveling, PvP, socials, transmog and other events. The **Events** tab lists what's coming up. |
+| Sync now (officers) | Uploads any new raid night right away, and says whether it worked or that there was nothing new to send. |
 | App updates | Tells you when a new version of the app is out and installs it in one click. |
 
 Officers also get automatic sync. See [run a raid night](../officers/raid-night.md).
