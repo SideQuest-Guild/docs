@@ -4,13 +4,14 @@ Game Master, the discord.py bot that runs events, roles and moderation in Discor
 
 - **[Slash commands](_generated/commands.md)**: every `/` command, generated from the bot's own
   source.
-- **[Python reference](python/index.md)**: the bot's shared modules (the API client and helpers),
-  generated from their doc comments. The slash command page covers what each plugin does.
+- **Python reference**: the bot's shared modules, such as the API client and the helpers. Each
+  module has its own page in the menu, generated from its doc comments. The slash command page
+  covers what each plugin does.
 
 ```{toctree}
-:maxdepth: 2
 :hidden:
+:glob:
 
 _generated/commands
-python/index
+/reference/_generated/python/sidequest_bot/*/index
 ```

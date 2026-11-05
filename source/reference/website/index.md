@@ -4,13 +4,14 @@ The Astro site and the Litestar API that runs sidequest-guild.com.
 
 - **[HTTP API](http/index.md)**: every route and data model, generated from the live OpenAPI
   schema.
-- **[Python reference](python/index.md)**: the API's own modules and the shared
-  `sidequest-common` package, generated from their doc comments.
+- **Python reference**: the `sidequest-common` package, with the models, schemas and settings that
+  the website and the bot share. Each module has its own page in the menu, generated from its doc
+  comments. Select **[source]** beside a class or a function to read its code.
 
 ```{toctree}
-:maxdepth: 2
 :hidden:
+:glob:
 
 http/index
-python/index
+/reference/_generated/python/sidequest_common/*/index
 ```

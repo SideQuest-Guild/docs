@@ -22,15 +22,22 @@ plain words.
   `changelog/`, `contributing/`. Anything under a `_generated/` folder is written by a script and
   gitignored; don't edit it by hand. `reference/_generated/python/` is written by
   `sphinx-autoapi`, configured in `conf.py`, not a standalone script. `sphinx.ext.viewcode` gives
-  each documented object a `[source]` link to a highlighted copy of its module under `_modules/`.
+  each class and function a `[source]` link to a highlighted copy of its module under `_modules/`.
   It must stay above `autoapi.extension` in `extensions`: autoapi only feeds viewcode if viewcode's
-  events exist when autoapi loads, and otherwise the links silently vanish.
+  events exist when autoapi loads, and otherwise the links silently vanish. `conf.py` answers
+  viewcode's source lookups itself, so names re-exported from private modules (`wow.Client`) get
+  links too.
+- The Python reference is laid out like the Litestar API reference: one page per module, titled
+  with its short name. `source/_autoapi_templates/python/module.rst` overrides autoapi's module
+  page. Each app's `reference/<id>/index.md` lists its package's direct submodules with a glob
+  toctree, so there is no "Python reference" page in between. A top-level package page that has
+  nothing of its own is an orphan; list it in the app's toctree once it gains members.
 - `source/_templates/sidebars/edit-this-page.html` overrides Shibuya's built-in version: Shibuya's
   own "Edit this page" link is baked once from the static `html_context` and can't vary per page,
   so `conf.py`'s `html-page-context` hook sets `sq_edit_url`/`sq_edit_label` per page instead
   (handwritten pages point here, generated README pages point at the source repo's README,
-  `_modules/` source pages say "View on GitHub" and point at that file at the commit the build
-  documented, generated reference pages get no link).
+  `_modules/` source pages and Python reference pages say "View on GitHub" and point at the
+  module's file at the commit the build documented, other generated reference pages get no link).
 
 ## Working
 

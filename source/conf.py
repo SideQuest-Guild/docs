@@ -6,7 +6,9 @@ import json
 import re
 import subprocess
 from pathlib import Path
+from types import SimpleNamespace
 
+from autoapi.extension import viewcode_find
 from docutils import nodes
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -62,6 +64,7 @@ exclude_patterns = [
     "developers/_generated/*.md",
     "reference/website/http/_generated/toctree.md",
     "_build",
+    "_autoapi_templates",
 ]
 
 templates_path = ["_templates"]
@@ -164,11 +167,21 @@ def _source_commit(app_id: str) -> str:
     return result.stdout.strip()
 
 
+AUTOAPI_ROOT = "reference/_generated/python"
+
+
 def _module_source(docname: str) -> tuple[str, str] | None:
-    """(app id, file path in its repo) for a viewcode page such as ``_modules/sidequest_bot/api_client``."""
-    if not docname.startswith("_modules/"):
+    """(app id, file path in its repo) for a module's page.
+
+    That is a viewcode page such as ``_modules/sidequest_bot/api_client`` or an autoapi page such as
+    ``reference/_generated/python/sidequest_bot/api_client/index``.
+    """
+    if docname.startswith("_modules/"):
+        parts = docname.removeprefix("_modules/").split("/")
+    elif docname.startswith(f"{AUTOAPI_ROOT}/") and docname.endswith("/index"):
+        parts = docname.removeprefix(f"{AUTOAPI_ROOT}/").removesuffix("/index").split("/")
+    else:
         return None
-    parts = docname.removeprefix("_modules/").split("/")
     for app_id, folder in PYTHON_SOURCE_DIRS:
         base = SOURCES / app_id / folder / Path(*parts)
         for candidate in (base.with_suffix(".py"), base / "__init__.py"):
@@ -191,8 +204,9 @@ def _edit_context(docname: str) -> dict:
     """sq_edit_url/sq_edit_label for the Edit this page sidebar link, or neither for generated pages."""
     app_id = _app_id_for_docname(docname)
 
-    # A highlighted source page links to the same file on GitHub, at the commit this build documented.
-    if docname.startswith("_modules/"):
+    # A module's reference page and its highlighted source page link to the module's file on GitHub, at the commit
+    # this build documented.
+    if docname.startswith(("_modules/", f"{AUTOAPI_ROOT}/")):
         if (module := _module_source(docname)) is None:
             return {}
         app_id, path = module
@@ -201,10 +215,8 @@ def _edit_context(docname: str) -> dict:
             "sq_edit_label": "View on GitHub",
         }
 
-    # Generated reference pages: no edit link, there's nothing to hand-edit.
+    # Other generated reference pages: no edit link, there's nothing to hand-edit.
     if docname.startswith("reference/") and "_generated" in docname:
-        return {}
-    if any(docname.startswith(f"reference/{app_id}/python/") for app_id, _ in PYTHON_SOURCE_DIRS):
         return {}
     if docname.startswith("changelog/") and docname != "changelog/index":
         return {}
@@ -273,9 +285,66 @@ def _show_sdk_reexports(app, what, name, obj, skip, options):
     return None
 
 
+_ELLIPSIS = re.compile(r"\bEllipsis\b")
+
+
+def _tidy_annotations(app, what, name, obj, skip, options):
+    """Write ``tuple[Ref, ...]`` as the source does. autoapi turns the ``...`` into ``Ellipsis``.
+
+    This runs as a skip handler because it is the one autoapi event that sees every object before it is rendered.
+    It never skips anything.
+    """
+    if obj.type in ("function", "method", "property", "attribute", "data"):
+        for attribute in ("args", "annotation", "return_annotation"):
+            if isinstance(value := getattr(obj, attribute, None), str):
+                setattr(obj, attribute, _ELLIPSIS.sub("...", value))
+    return None
+
+
+def _public_names(env) -> dict[str, str]:
+    """Map a private path, such as ``wow._types.Region``, to the public name that re-exports it (``wow.Region``)."""
+    if not hasattr(env, "sq_public_names"):
+        env.sq_public_names = {
+            obj.obj["original_path"]: obj.id
+            for obj in env.autoapi_all_objects.values()
+            if obj.imported and obj.display and "._" in obj.obj.get("original_path", "")
+        }
+    return env.sq_public_names
+
+
+def _link_to_public_name(app, env, node, contnode):
+    """Link a type hint or base class that names a private path to the public name that re-exports it.
+
+    A base class is written out in full, such as ``wow.models._common.Model``, so it shows the short name instead.
+    """
+    if node.get("refdomain") != "py" or (public := _public_names(env).get(node["reftarget"])) is None:
+        return None
+    if contnode.astext() == node["reftarget"]:
+        contnode = nodes.literal(text=public.rpartition(".")[2], classes=contnode["classes"])
+    return env.get_domain("py").resolve_xref(env, node["refdoc"], app.builder, "obj", public, node, contnode)
+
+
+def _viewcode_source(app, modname):
+    """viewcode's source for any module autoapi parsed, with [source] links on classes and functions only.
+
+    autoapi's own handler covers only the modules it renders, so a name re-exported from a private module, such as
+    ``wow.Client`` from ``wow._sync._client``, had no link. It also linked every attribute, which the Litestar
+    reference does not.
+    """
+    parsed = app.env.autoapi_all_objects
+    if modname not in parsed:
+        return None
+    source, tags = viewcode_find(SimpleNamespace(env=SimpleNamespace(autoapi_objects=parsed)), modname)
+    return source, {name: tag for name, tag in tags.items() if tag[0] != "other"}
+
+
 def setup(app):
     app.connect("html-page-context", _html_page_context)
+    app.connect("autoapi-skip-member", _tidy_annotations, priority=400)
     app.connect("autoapi-skip-member", _show_sdk_reexports)
+    app.connect("missing-reference", _link_to_public_name)
+    # Ahead of autoapi's own handler, which would otherwise answer first.
+    app.connect("viewcode-find-source", _viewcode_source, priority=400)
 
 
 html_theme_options = {
@@ -347,17 +416,24 @@ html_sidebars = {
 }
 
 # -- Python reference (sphinx-autoapi) ----------------------------------------
-# One combined autoapi root; each app's reference page builds its own toctree
-# into the relevant subtree instead of using autoapi's own auto-inserted one,
-# so the website's and the bot's Python references can live on separate pages.
+# One combined autoapi root. Each app's reference page lists its top-level package and that package's direct
+# submodules, so the website's, the bot's and the SDK's Python references live under their own apps.
 
 autoapi_type = "python"
-autoapi_root = "reference/_generated/python"
+autoapi_root = AUTOAPI_ROOT
 autoapi_dirs = [str(SOURCES / app_id / folder) for app_id, folder in PYTHON_SOURCE_DIRS]
 autoapi_add_toctree_entry = False
 autoapi_keep_files = False
-autoapi_member_order = "groupwise"
-autoapi_python_class_content = "both"
+autoapi_template_dir = "_autoapi_templates"
+# Members in the order the source defines them, as the Litestar reference does.
+autoapi_member_order = "bysource"
+# Only the class docstring: the code bases document arguments there, and with "both" a class without its own
+# __init__ docstring showed one inherited from Python, such as "Initialize self. See help(type(self))...".
+autoapi_python_class_content = "class"
+# The page's table of contents lists `request`, not `APIError.request`, under its class.
+toc_object_entries_show_parents = "hide"
+# A type hint that links to its documentation shows its short name, such as `Region` for `wow.Region`.
+python_use_unqualified_type_names = True
 # No "imported-members": with it every module page repeated each name it imports, which tripled the
 # page count and the build time. The API's own package and the bot plugins are left out on purpose: the HTTP
 # reference and the slash command page describe them better than their Python signatures do.
@@ -365,7 +441,6 @@ autoapi_options = [
     "members",
     "undoc-members",
     "show-inheritance",
-    "show-module-summary",
 ]
 autoapi_ignore = [
     "*/migrations/*",
