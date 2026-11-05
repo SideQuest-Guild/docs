@@ -1,7 +1,7 @@
 # Changelogs
 
-What shipped in each release of every repo. The addon's changelog comes from its own
-`CHANGELOG.md`; the others are generated from their Conventional Commit history with
+What shipped in each release of every repo. The addon's and the SDK's changelogs come from their
+own `CHANGELOG.md`; the others are generated from their Conventional Commit history with
 [git-cliff](https://git-cliff.org).
 
 ```{toctree}
@@ -12,4 +12,5 @@ website
 bot
 addon
 companion
+wow-forever-sdk
 ```

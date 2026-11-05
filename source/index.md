@@ -56,11 +56,11 @@ Run events and raid nights, mark attendance, and confirm members.
 :link-type: doc
 :class-card: sq-door
 
-Run, test, and change the four apps.
+Run, test, and change the four apps and the SDK.
 :::
 ::::
 
-## The four apps
+## The apps and the SDK
 
 ::::{grid} 1 1 2 2
 :gutter: 3
@@ -100,6 +100,15 @@ A tray app for Windows, macOS, and Linux that syncs the addon with the site.
 
 {doc}`Guide <developers/companion/index>` · {doc}`Reference <reference/companion/index>` ·
 {doc}`Changelog <changelog/companion>` · [Repo](https://github.com/SideQuest-Guild/companion)
+:::
+
+:::{grid-item-card} {iconify}`simple-icons:python` WoW Forever SDK
+:class-card: sq-app
+
+A typed Python client for the World of Warcraft: Forever Battle.net API.
+
+{doc}`Guide <developers/wow-forever-sdk/index>` · {doc}`Reference <reference/wow-forever-sdk/index>` ·
+{doc}`Changelog <changelog/wow-forever-sdk>` · [Repo](https://github.com/JacobCoffee/wow-forever-sdk)
 :::
 ::::
 

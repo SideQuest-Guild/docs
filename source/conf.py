@@ -34,8 +34,14 @@ extensions = [
     # only if viewcode loads first: autoapi checks for viewcode's events when it is set up.
     "sphinx.ext.viewcode",
     "autoapi.extension",
+    # Google-style Args:/Returns:/Raises: sections, as the WoW Forever SDK writes them, become parameter lists.
+    # Docstrings without those sections are left as they are.
+    "sphinx.ext.napoleon",
 ]
 viewcode_line_numbers = True
+napoleon_numpy_docstring = False
+# An Attributes: section becomes a field list, not a second entry beside the attribute autoapi already documents.
+napoleon_use_ivar = True
 notfound_urls_prefix = "/"
 
 source_suffix = {
@@ -131,7 +137,7 @@ html_context = {
 
 
 def _app_id_for_docname(docname: str) -> str | None:
-    for app_id in ("website", "bot", "addon", "companion"):
+    for app_id in REPO_BY_ID:
         if docname == f"developers/{app_id}" or docname.startswith(f"developers/{app_id}/"):
             return app_id
         if docname == f"reference/{app_id}" or docname.startswith(f"reference/{app_id}/"):
@@ -143,7 +149,7 @@ def _app_id_for_docname(docname: str) -> str | None:
 
 # Where the Python reference's source lives: (app id, folder inside that repo). autoapi documents these folders, and
 # the [source] pages viewcode writes for them (docnames under _modules/) link back to the file on GitHub.
-PYTHON_SOURCE_DIRS = [("website", "packages/sidequest-common/src"), ("bot", "src")]
+PYTHON_SOURCE_DIRS = [("website", "packages/sidequest-common/src"), ("bot", "src"), ("wow-forever-sdk", "src")]
 
 
 @functools.cache
@@ -198,7 +204,7 @@ def _edit_context(docname: str) -> dict:
     # Generated reference pages: no edit link, there's nothing to hand-edit.
     if docname.startswith("reference/") and "_generated" in docname:
         return {}
-    if re.match(r"^reference/(website|bot)/python/", docname):
+    if any(docname.startswith(f"reference/{app_id}/python/") for app_id, _ in PYTHON_SOURCE_DIRS):
         return {}
     if docname.startswith("changelog/") and docname != "changelog/index":
         return {}
@@ -228,7 +234,7 @@ def _install_changelog_pills(pathto, original_toctree):
         html = original_toctree(*args, **kwargs)
         if not html:
             return html
-        for app_id in ("website", "bot", "addon", "companion"):
+        for app_id in REPO_BY_ID:
             pattern = re.compile(
                 r'(<a class="[^"]*" href="([^"]*developers/' + app_id + r'/index\.html)">.*?</a>)'
             )
@@ -253,8 +259,23 @@ def _html_page_context(app, pagename, templatename, context, doctree):
     context["meta"] = _social_meta(context.get("meta"), doctree)
 
 
+# The SDK defines its public names in private modules (such as `wow._sync._client`) and re-exports them from these
+# public modules. autoapi hides every imported name, which would leave `wow.Client` with no page, so these
+# re-exports are shown. A name that a public module defines, such as `wow.models.item.Item`, stays hidden where it is
+# re-exported, so it is not documented twice.
+SDK_PUBLIC_MODULES = ("wow", "wow.models", "wow.resources")
+
+
+def _show_sdk_reexports(app, what, name, obj, skip, options):
+    original = obj.obj.get("original_path", "")
+    if obj.imported and name.rpartition(".")[0] in SDK_PUBLIC_MODULES and "._" in original:
+        return False
+    return None
+
+
 def setup(app):
     app.connect("html-page-context", _html_page_context)
+    app.connect("autoapi-skip-member", _show_sdk_reexports)
 
 
 html_theme_options = {
@@ -285,6 +306,7 @@ html_theme_options = {
                 {"title": "Discord bot", "url": "developers/bot/index", "summary": "Game Master, the discord.py bot."},
                 {"title": "Addon", "url": "developers/addon/index", "summary": "The in-game WoW addon and sidequest-sync."},
                 {"title": "Companion", "url": "developers/companion/index", "summary": "The native tray sync app."},
+                {"title": "WoW Forever SDK", "url": "developers/wow-forever-sdk/index", "summary": "The typed Python client for the Battle.net API."},
                 {"title": "API reference", "url": "reference/website/http/index", "summary": "Every HTTP route and data model."},
             ],
         },
@@ -305,6 +327,7 @@ html_theme_options = {
                 {"title": "Discord bot", "url": "changelog/bot"},
                 {"title": "Addon", "url": "changelog/addon"},
                 {"title": "Companion", "url": "changelog/companion"},
+                {"title": "WoW Forever SDK", "url": "changelog/wow-forever-sdk"},
             ],
         },
         {"title": "Site", "url": "https://sidequest-guild.com", "external": True},

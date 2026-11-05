@@ -1,6 +1,6 @@
 # Developers
 
-SideQuest is four repos. Each one deploys on its own, and each one talks to the others only over
+SideQuest is five repos. Each app deploys on its own, and each one talks to the others only over
 the network, never by sharing a database or a filesystem.
 
 - [**website**](https://github.com/SideQuest-Guild/website): the Astro site and the Litestar
@@ -12,6 +12,9 @@ the network, never by sharing a database or a filesystem.
   site.
 - [**companion**](https://github.com/SideQuest-Guild/companion): a native tray app for Windows,
   macOS and Linux. Syncs the addon's save file with the site and keeps the addon up to date.
+- [**wow-forever-sdk**](https://github.com/JacobCoffee/wow-forever-sdk): a Python package for the
+  World of Warcraft: Forever Battle.net API. It is a library, not an app, and no other repo uses
+  it yet.
 
 ```{mermaid}
 flowchart LR
@@ -36,9 +39,10 @@ flowchart LR
 | Change a tab, raid recording, or loot bidding in the in-game window | addon (`SideQuest/`) |
 | Change the save-file uploader's behaviour | addon (`uploader/`) or companion |
 | Change the tray app, auto-sync, or addon/self updates | companion |
+| Add or change a Battle.net route, a game data model, or the Battle.net client | wow-forever-sdk |
 
 Each repo's own developer pages go deeper: {doc}`website/index`, {doc}`bot/index`,
-{doc}`addon/index`, {doc}`companion/index`.
+{doc}`addon/index`, {doc}`companion/index`, {doc}`wow-forever-sdk/index`.
 
 ## Shared rules across repos
 
@@ -80,7 +84,8 @@ import file, the companion's `src/sync.rs`.
    a commit that touches only `.github/` or docs deploys nothing.
 3. The addon and the companion app don't deploy on every push. They ship on a signed `v*` tag,
    which starts a release workflow that builds, signs, and publishes the build; see their own
-   **Deploy** pages.
+   **Deploy** pages. The SDK ships to PyPI from a GitHub release; see its
+   {doc}`wow-forever-sdk/deploy` page.
 4. After a website deploy, the `Deployed` workflow clears Cloudflare's cache and runs the browser
    tests against the live site, so a broken deploy is caught within minutes.
 
@@ -98,4 +103,5 @@ website/index
 bot/index
 addon/index
 companion/index
+WoW SDK <wow-forever-sdk/index>
 ```
