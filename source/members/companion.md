@@ -17,8 +17,11 @@ launch shows a warning; you only get past it once.
 :sync: windows
 
 1. Download the **Windows** file (**ARM** if your PC has an Arm chip, such as a Snapdragon).
-2. Unzip it and open `sidequest-companion.exe`.
-3. When Windows warns you, select **More info**, then **Run anyway**.
+2. Open the setup file you downloaded. When Windows warns you, select **More info**, then
+   **Run anyway**.
+3. Select **Next**, then **Finish**. Setup closes and replaces the app if an older version is
+   running, and adds **SideQuest Companion** to the Start menu. To remove it later, go to
+   **Settings → Apps**.
 :::
 
 :::{tab-item} {iconify}`mdi:apple` macOS
