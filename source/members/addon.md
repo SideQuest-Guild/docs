@@ -8,9 +8,10 @@ loot points. You can also sign up for raids and ask for standby from inside the 
 1. Install **SideQuest Guild** from [CurseForge](https://www.curseforge.com/projects/1773662)
    with the CurseForge app, or download the zip from
    [GitHub releases](https://github.com/SideQuest-Guild/addon/releases) and unzip it into
-   `_classic_beta_/Interface/AddOns/`.
+   `_forever_/Interface/AddOns/`.
 2. Check you have `Interface/AddOns/SideQuest/SideQuest.toc`.
-3. In game, type `/sq` to open the window.
+3. In game, click the crest on the minimap or type `/sq` to open the window. Drag the crest
+   round the minimap to move it, or type `/sq minimap` to hide it.
 
 The [companion app](companion.md) can also install the addon for you and keep it up to date.
 

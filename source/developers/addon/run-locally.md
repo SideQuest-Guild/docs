@@ -5,7 +5,7 @@ The addon itself has no build step. It runs inside the game.
 ## Load the addon in game
 
 1. Copy or symlink the `SideQuest/` folder into your WoW install's
-   `_classic_beta_/Interface/AddOns/` folder, so you end up with
+   `_forever_/Interface/AddOns/` folder, so you end up with
    `Interface/AddOns/SideQuest/SideQuest.toc`.
 2. Start the game and type `/sq` to open the window.
 
