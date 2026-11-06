@@ -47,6 +47,17 @@ one officer imports, every member online shares the new points at once. Both str
 defined in the website repo, in `packages/sidequest-common/src/sidequest_common/schemas/epgp.py`
 and `guild_hub.py`.
 
+## Guild calendar
+
+`Calendar.lua` puts the imported events on the in-game calendar as guild announcements (not
+sign-up events, so sign-ups stay on the site). `C_Calendar.AddEvent` only runs inside a click, so
+the Sync tab's **Update calendar** button and `/sq calendar` make one change per press: removals
+first, then additions by start time. Calendar events can't hold a site id, so an announcement
+matches a site event by title (cut to 31 bytes) and start in realm time, converted from the
+site's UTC using the realm clock's offset. `SideQuestDB.calendarLinks` remembers where each event
+was last seen, which is how a moved or cancelled event's old announcement is found and removed,
+including one another officer added.
+
 ## What isn't tested on Forever yet
 
 Nobody has run the addon on a live Forever server yet. These parts may not work there, and the
@@ -57,6 +68,7 @@ addon tells the officer running it when one of them fails:
 - The guild bank log and recipe lists, read through WoW's own API.
 - The save file itself, which was unreliable during the beta; officers are told to export more
   than once during a long raid night instead of only at the end.
+- Adding and removing guild calendar events (`C_Calendar.AddEvent` and the context-menu remove).
 
 If one of these fails in game, the Console's Loot tab still lets an officer record who got an
 item by hand, and points can be read out in voice chat.

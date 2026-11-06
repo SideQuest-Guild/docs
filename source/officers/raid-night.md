@@ -53,5 +53,17 @@ SideQuest Companion does this automatically for a signed-in officer: it stages t
 next login picks it up with nothing to copy or paste. Once one officer imports, every member
 online gets the new points.
 
+## Put events on the in-game calendar
+
+After an import, the addon's Console **Sync** tab says how many of the site's upcoming events
+aren't on the guild calendar yet.
+
+1. Click **Update calendar**, or type `/sq calendar`.
+2. Repeat until it says the calendar matches. The game allows one new calendar event per click.
+
+Events go on as guild announcements at realm time, with a link to the sign-up page. If the site
+moves or cancels an event, the next clicks take the old one off and add the new one. Your guild
+rank needs the right to add guild events.
+
 See the [addon's developer page](../developers/addon/index.md) for the full raid night walkthrough and
 loot bidding rules, and [use the companion app](../members/companion.md) to set it up.
