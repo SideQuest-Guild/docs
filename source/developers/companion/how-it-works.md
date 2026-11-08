@@ -16,8 +16,13 @@ temporary file then renaming it so the game never reads a half-written file, kee
 change to it needs a matching change on the addon side too.
 
 It also checks the addon's GitHub releases against the version installed in the player's
-`AddOns` folder and offers to install the latest one (the same signed zip CurseForge serves), and
-checks its own releases the same way to update itself.
+`AddOns` folder every hour, and every 15 minutes while WoW is running, and installs a new one on
+its own by default (the same signed zip CurseForge serves). WoW doesn't have to be closed: it
+swaps the files in place, and the addon shows an in-game popup telling the player to `/reload`.
+`Settings → Install updates automatically` turns that off in favor of a one-click install, and a
+chevron next to an installed version offers a rollback to any released version, which pins that
+flavor until the player picks the latest again. It checks its own releases the same way, hourly,
+to update itself.
 
 ## Tray and update check
 

@@ -6,9 +6,12 @@ sees what under Server Settings, Integrations. A setting saves to the API at onc
 | Command | Needs | What it does |
 |---|---|---|
 | `/eventsync forum [channel]` | Manage Server | Picks the forum for event threads. |
+| `/lfg channel <channel>`, `/lfg pingrole <kind> [role]`, `/lfg status` | Manage Server | Picks the `#lfg` panel channel, sets a kind's opt-in ping role, or shows live groups. |
 | `/weeklyboard channel`, `/weeklyboard preview` | Manage Server | Picks the weekly board's channel, or shows this week's board. |
 | `/badges channel`, `/badges sync` | Manage Server | Picks where badges are announced, or checks for new badges now. |
+| `/lootlog channel` | Manage Server | Picks where council loot decisions are posted, with their reasons. |
 | `/announcements channel` | Manage Server | Picks where announcements from the game and the website are posted. |
+| `/foreverfeed channel` | Manage Server | Picks where WoW: Forever news from Blizzard and Wowhead is posted. A new channel gets the latest three first. |
 | `/signups channel` | Manage Server | Picks where new sign-ins are posted, each with an **Approve** button. |
 | `/guestwelcome post <channel>` | Manage Server | Posts and pins the **Start here** button. |
 | `/linkroles site`, `battlenet`, `gate`, `roster` | Manage Server | Picks the four roles that come from the website. |
@@ -16,6 +19,7 @@ sees what under Server Settings, Integrations. A setting saves to the API at onc
 | `/welcome ...` | Manage Server | Sets the welcome message and the role new members get. `/welcome test` shows it. |
 | `/logging channel`, `/logging status` | Manage Server | Picks where edits, deletes, joins, leaves, role changes and voice moves are logged. |
 | `/levels ...` | Manage Server | Sets level rewards, XP range, cooldown, level-up messages, and channels or roles that earn no XP. |
+| `/stats backfill [days]` | Manage Server | Reads past message counts from channel history into server stats (default the last year). Safe to re-run. |
 | `/rolemenu ...` | Manage Roles | Builds button panels that let members pick their own roles. |
 | `/warn`, `/timeout`, `/untimeout` | Timeout Members | Each one DMs the member, opens a numbered case and logs it. |
 | `/kick` | Kick Members | Same as above. |

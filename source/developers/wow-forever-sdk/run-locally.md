@@ -35,5 +35,5 @@
    uv run python -c "from wow import Client; print(Client().playable_classes.get(1).name)"
    ```
 
-The [usage guide](https://github.com/SideQuest-Guild/wow-forever-sdk/blob/main/docs/usage.md) shows each part of the
+The {doc}`usage guide <usage>` shows each part of the
 client: regions, search, errors and raw access.

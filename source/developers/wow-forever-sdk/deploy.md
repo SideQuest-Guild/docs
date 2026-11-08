@@ -1,6 +1,6 @@
 # Release
 
-The SDK is a package, so a release puts it on PyPI. It is not on PyPI yet.
+The SDK is a package, so a release puts it on PyPI as [`wow`](https://pypi.org/project/wow/).
 
 ## Steps
 

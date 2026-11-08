@@ -20,6 +20,7 @@ details for that repo.
 | [bot](https://github.com/SideQuest-Guild/bot) | The Discord bot. It reaches the database only through the API | Python (discord.py) |
 | [addon](https://github.com/SideQuest-Guild/addon) | The in-game addon and the `sidequest-sync` uploader | Lua, Python |
 | [companion](https://github.com/SideQuest-Guild/companion) | The desktop tray app that syncs the addon with the site | Rust (GPUI) |
+| [wow-forever-sdk](https://github.com/SideQuest-Guild/wow-forever-sdk) | A typed Python client for the World of Warcraft: Forever Battle.net API | Python |
 
 ## Before you start
 

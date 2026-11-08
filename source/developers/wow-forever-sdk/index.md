@@ -4,7 +4,8 @@ The SDK is a Python package for the World of Warcraft: Forever Battle.net API. I
 such as classes, items, mounts and quests. It also gets tokens, retries failed requests and reads search results.
 You import it as `wow`.
 
-The SDK is a library, not a service. No other SideQuest repo uses it yet, and it is not on PyPI yet.
+The SDK is a library, not a service. The website's API depends on it, and it is on PyPI as
+[`wow`](https://pypi.org/project/wow/).
 
 ## Main parts
 
@@ -18,7 +19,9 @@ The SDK is a library, not a service. No other SideQuest repo uses it yet, and it
 
 ## Pages
 
-- {doc}`run-locally`: set it up and call the API
+- {doc}`usage`: install it and call the API
+- {doc}`models`: how to read a model
+- {doc}`run-locally`: set it up to develop it
 - {doc}`test`: what `make ci` runs, and the live check of the models
 - {doc}`how-it-works`: the two clients, tokens, models, and the namespaces
 - {doc}`deploy`: how a release gets to PyPI
@@ -28,6 +31,8 @@ The SDK is a library, not a service. No other SideQuest repo uses it yet, and it
 :maxdepth: 1
 :hidden:
 
+usage
+models
 run-locally
 test
 how-it-works

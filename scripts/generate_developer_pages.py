@@ -1,4 +1,4 @@
-"""Turn each source repo's README into a developer page.
+"""Turn each source repo's README, and any docs guides it lists, into developer pages.
 
 Reads repos.json, pulls the README out of .sources/<id> (populated by
 fetch_sources.py locally, or by actions/checkout in CI), rewrites relative
@@ -6,6 +6,12 @@ links and images so they point at GitHub instead of a path that only exists
 in the cloned checkout, and writes the result to
 source/developers/_generated/<id>.md. The checked-in page at
 source/developers/<id>.md pulls this file in with a MyST `include` directive.
+
+A source can also list `guides`: paths (relative to its repo root) of other
+Markdown pages to publish the same way, such as the WoW Forever SDK's usage
+and models guides. Each one is rewritten the same way and written to
+source/developers/_generated/<id>-<stem>.md, where a checked-in wrapper page
+includes it.
 """
 
 from __future__ import annotations
@@ -83,6 +89,17 @@ def main() -> int:
         out = OUT_DIR / f"{source['id']}.md"
         out.write_text(rewritten)
         print(f"wrote {out.relative_to(ROOT)}")
+
+        for guide_path in source.get("guides", []):
+            guide = SOURCES_DIR / source["id"] / guide_path
+            stem = Path(guide_path).stem
+            if not guide.exists():
+                print(f"error: {guide} not found, run `make fetch` first", file=sys.stderr)
+                return 1
+            rewritten_guide = rewrite_readme(guide.read_text(), source["repo"])
+            guide_out = OUT_DIR / f"{source['id']}-{stem}.md"
+            guide_out.write_text(rewritten_guide)
+            print(f"wrote {guide_out.relative_to(ROOT)}")
     return 0
 
 

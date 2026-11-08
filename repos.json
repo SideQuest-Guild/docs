@@ -79,6 +79,7 @@
       "title": "WoW Forever SDK",
       "summary": "A typed Python client, sync and async, for the World of Warcraft: Forever Battle.net API.",
       "readme_path": "README.md",
+      "guides": ["docs/usage.md", "docs/models.md"],
       "shipped": true,
       "changelog": {
         "path": "CHANGELOG.md"

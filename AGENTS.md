@@ -76,6 +76,18 @@ instead of at the daily 06:17 UTC build.
 - Per-OS steps go in a sphinx-design `tab-set` with `:sync-group: os` and `:sync:` keys
   `windows`, `macos`, `linux`, so a reader's pick follows them across pages. Label each tab with
   its `{iconify}` icon (`mdi:microsoft-windows`, `mdi:apple`, `mdi:linux`).
+- Per-installer steps (how to add a Python package) go in a `tab-set` with `:sync-group:
+  installer` and `:sync:` keys `uv`, `pip`, `pdm`, `poetry`, `pipenv`, in that order, `uv` first
+  as the default. Label each with its `{iconify}` icon (`simple-icons:uv`, `simple-icons:pypi` for
+  pip, `simple-icons:pdm`, `simple-icons:poetry`, `simple-icons:python` for pipenv, which has no
+  icon of its own).
+- Sync/async code examples go in a `tab-set` with `:sync-group: io` and `:sync:` keys `sync`,
+  `async`, in that order, labelled "Sync" and "Async" with no icon. Give both tabs the same code;
+  the async tab uses `AsyncClient`, `async with`, `await` and `async for` where it applies. A
+  snippet that does no I/O (building a filter, `with_options`) stays a single code block.
+- A reader's pick in any synced `tab-set` (`os`, `installer`, `io`) also follows them to a new
+  page load and a new visit: `source/_static/tab-memory.js` mirrors sphinx-design's own
+  per-page `sessionStorage` pick into `localStorage` and back.
 - Every page gets a link-preview description: the page's front matter `description:` if set,
   otherwise its first real paragraph (`conf.py`, `_social_meta`). Write that first paragraph as a
   summary of the page. Every page also gets `_static/social-card.jpg` as its preview image.

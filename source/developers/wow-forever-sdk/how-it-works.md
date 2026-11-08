@@ -42,5 +42,4 @@ yet from a namespace that does not exist.
 
 The client retries connection errors, timeouts, and 408, 429 and 5xx responses, and obeys `Retry-After`. It never
 retries the exchange of a login code, because Battle.net accepts each code one time only. The
-[usage guide](https://github.com/SideQuest-Guild/wow-forever-sdk/blob/main/docs/usage.md#retries-and-timeouts) gives the
-limits.
+{doc}`usage guide <usage>` gives the limits.

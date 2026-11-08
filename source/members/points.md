@@ -37,8 +37,18 @@ bidding.
 ## Read your PR
 
 1. Go to the [ledger page](https://sidequest-guild.com/ledger/) or open the addon's **Ledger**
-   tab.
+   tab. Every confirmed guild member is listed, even before their first raid.
 2. Find your character.
-3. Check your EP, GP and PR, and your recent points history and loot.
+3. Check your EP, GP and PR. On the site, select **Breakdown** on your row to see each EP award
+   and GP charge, and what it counts for today after decay.
 
 A higher PR means you're more likely to win an item you bid on for your main spec.
+
+## Plan ahead
+
+The ledger page's **Calculator** shows what your EP, GP and PR will be after the next weekly
+reset and raid. Pick yourself, or type your own EP and GP, then set the raid (on time, full
+night, boss kills) and any loot you expect to win. It shows where that PR would rank. Select
+**Compare with someone else** to put a second person beside you and see who would win a
+contested main-spec drop. See [Loot: what happens when...](loot-scenarios.md) for how each kind
+of drop is decided.

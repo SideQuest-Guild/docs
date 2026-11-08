@@ -73,6 +73,9 @@ html_theme = "shibuya"
 html_static_path = ["_static"]
 html_extra_path = ["_extra", "_extra_rustdoc"]
 html_css_files = ["custom.css"]
+# Runs before DOMContentLoaded, ahead of sphinx-design's own sd_tabs.js, so a synced tab's pick
+# (OS, installer, io, ...) follows a reader across pages and across visits. See its comments.
+html_js_files = ["tab-memory.js"]
 html_title = "SideQuest Guild Docs"
 html_baseurl = "https://docs.sidequest-guild.com/"
 html_favicon = "_static/logo.png"
@@ -355,8 +358,8 @@ html_theme_options = {
     "page_layout": "default",
     # Root-relative link: the banner shows on every page, at every depth.
     "announcement": (
-        'SideQuest Companion v0.1.0 is out: guild sync, addon updates and raid reminders in your tray. '
-        '<a href="/members/companion.html">Get the app</a>'
+        'New guides: <a href="/members/roles.html">roles and ranks</a>, and '
+        '<a href="/members/loot-scenarios.html">what happens when loot drops</a>.'
     ),
     "github_url": "https://github.com/SideQuest-Guild",
     "discord_url": "https://discord.gg/nwncP7H9Hh",

@@ -8,19 +8,28 @@ recorded as the raid goes.
 1. Open the addon's **Console** tab in game. The addon treats you as an officer if your guild
    rank can edit officer notes.
 2. Go to **Raid Night**.
-3. Select **Prep** to ask the raid to report food, flasks and repairs.
+3. Zone into the raid and select **Start recording**. The **Who can record** list shows every
+   officer SideQuest has heard from recently and whether they're already recording, so two
+   officers don't record the same night by accident; clicking **Start recording** again when
+   someone else is already recording asks you to confirm first.
+4. Select **Prep** to ask the raid to report food, flasks and repairs.
 
 ## Run the raid
 
 1. Select **Invite** to invite everyone who signed up on the website.
-2. Select **Start raid** to begin recording. This gives everyone present 5 EP for being on time,
-   and tells the raid you're recording so a second officer doesn't record the same night.
+2. Select **Start raid** to give everyone present 5 EP for being on time. It only unlocks once
+   you've selected **Start recording** above.
 3. Let boss kills and wipes record on their own: a kill gives 10 EP, and the first wipe of the
    night on a boss the guild hasn't killed gives 10 EP, once per boss per night.
 4. When loot drops, select **Loot** to open bidding. Raiders get a popup with the item, its GP
-   price, their PR and Main, Off and Pass buttons. Chase items, legendaries and crafted tier are
-   left for the loot council to decide.
-5. Select **End raid** to give 5 EP to everyone still there and stop recording.
+   price, their PR and Main, Off and Pass buttons. Chase items, legendary or special items and
+   crafted tier are left for the loot council to decide. Record the council's pick in the
+   **Council award** form on the Console's **Loot** tab: the item, the winner, the kind (Chase,
+   Legendary or Tier, with the slot for tier) and a one-line reason. **Award by council** stays
+   off until all of them are set. The reason is posted in #loot-log after the night syncs.
+5. Select **End raid** to give 5 EP to everyone still there. It unlocks once you're recording,
+   but doesn't stop recording by itself. Select **Stop recording** (or type `/sq record`)
+   when the night is over.
 
 :::{note}
 Every award prints a chat line with an undo command, and the Raid Night tab has an **Undo**

@@ -3,8 +3,8 @@
 ## Tabs
 
 The window has one tab per task: You (your own points and next raid), Guild (the roster),
-Crafters (who can make what), Market (who sells, buys and holds what), Raids (sign-ups), Ledger
-(everyone's EP, GP and PR), and News.
+Crafters (who can make what), Market (who sells, buys and holds what), Events (sign-ups and the
+last 30 days' past events), Ledger (everyone's EP, GP and PR), and News.
 Officers also get a gold **Console** tab with its own sub-tabs for running a raid night. See the
 [addon's own README](https://github.com/SideQuest-Guild/addon#for-members) for what each tab
 shows.
@@ -37,15 +37,28 @@ tabs and the item tooltip read from this store, and officers' exports carry all 
 site. The full contract is the addon's
 [docs/directory.md](https://github.com/SideQuest-Guild/addon/blob/main/docs/directory.md).
 
+## Guild roster
+
+`Roster.lua`'s sweep (`/sq roster` or the Console's **Roster** tab) reads `GetGuildRosterInfo`
+for every member, including hours since last online from `GetGuildRosterLastOnline`, and the
+guild's ranks from `GuildControlGetRankName`/`GuildControlGetRankFlags`, marking which ranks
+carry officer privileges (the Guild Master's rank always does; every other rank's officer flag
+comes from a `pcall`'d read, so a client that can't read it sends "unknown" rather than a guess).
+An officer's next export carries the snapshot to the site, which is how the public roster and
+officers list stay current without a manual list.
+
 ## Export and import
 
 `Sync.lua` builds the `SQX1:` export string: the night's record, ready to send to the website.
 An officer sends it with `/sq export` (copy and paste), by uploading the save file, or
 automatically through `sidequest-sync` or the companion app. The website replies with an `SQI1:`
-import string that brings updated points and events back into the addon with `/sq import`. Once
-one officer imports, every member online shares the new points at once. Both string formats are
-defined in the website repo, in `packages/sidequest-common/src/sidequest_common/schemas/epgp.py`
-and `guild_hub.py`.
+import string that brings updated points and events back into the addon with `/sq import`.
+`Standings.BroadcastAfterImport` (`Standings.lua`) then sends the new EP/GP standings over the
+guild channel as a `STANDINGS` message, with that import's events and past events riding along,
+so members never need to import anything themselves; a client that logs in later asks any
+officer online for a fresher copy with `STANDINGS_REQ`. Both string formats are defined in the
+website repo, in `packages/sidequest-common/src/sidequest_common/schemas/epgp.py` and
+`guild_hub.py`.
 
 ## Guild calendar
 
@@ -57,6 +70,16 @@ matches a site event by title (cut to 31 bytes) and start in realm time, convert
 site's UTC using the realm clock's offset. `SideQuestDB.calendarLinks` remembers where each event
 was last seen, which is how a moved or cancelled event's old announcement is found and removed,
 including one another officer added.
+
+## Updates
+
+The game only reloads addon files at login or `/reload`, so when SideQuest Companion installs a
+newer SideQuest while WoW is still running, the old version keeps running until then.
+`Updates.lua` works around having no file-read API: Companion leaves a font file named after the
+version it just replaced at `Media\Updates\<version>.ttf`, and every 15 seconds the running
+addon tries to load a font named after itself at that path. Once that load succeeds, the still-
+running old version knows a newer SideQuest is already installed, so it prints a message and
+shows a **Reload now** popup.
 
 ## What isn't tested on Forever yet
 

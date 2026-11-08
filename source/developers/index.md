@@ -13,8 +13,8 @@ the network, never by sharing a database or a filesystem.
 - [**companion**](https://github.com/SideQuest-Guild/companion): a native tray app for Windows,
   macOS and Linux. Syncs the addon's save file with the site and keeps the addon up to date.
 - [**wow-forever-sdk**](https://github.com/SideQuest-Guild/wow-forever-sdk): a Python package for the
-  World of Warcraft: Forever Battle.net API. It is a library, not an app, and no other repo uses
-  it yet.
+  World of Warcraft: Forever Battle.net API. It is a library, not an app. The website's API depends
+  on it (`wow` on PyPI) for auction house prices.
 
 ```{mermaid}
 flowchart LR

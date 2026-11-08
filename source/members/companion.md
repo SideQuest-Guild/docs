@@ -60,12 +60,23 @@ If it can't, open **Settings → WoW Folders**, choose **Add folder** and pick y
 
 | Feature | What it does |
 |---|---|
-| Addon updates | Tells you when a new SideQuest addon is out and installs it in one click. Turn on **Install updates automatically while WoW is closed** in **Settings** to skip the click. |
+| Addon updates | Checks for a new SideQuest addon every hour, and every 15 minutes while WoW is running, and installs it on its own. WoW doesn't have to be closed: the game shows a popup telling you to `/reload` once the new version is in place. Turn off **Install updates automatically** in **Settings** to install updates in a click instead. **Check for updates** on the **Overview** or **Addon** tab checks right away. The chevron beside an installed version lets you pick an older release instead of the latest, for example to roll back one with a bug; installing anything but the latest pins it there until you choose **Back to latest**. |
 | Event reminders | A notification 30 minutes before raids you've signed up for. In **Settings** you can pick every scheduled event instead, and which kinds: raids, dungeons, world bosses, leveling, PvP, socials, transmog and other events. The **Events** tab lists what's coming up. |
 | Sync now (officers) | Uploads any new raid night right away, and says whether it worked or that there was nothing new to send. |
-| App updates | Installs new versions of the app on its own and restarts into them. Turn off **Install app updates automatically** in **Settings** to be asked first instead. |
+| App updates | Checks for a new app version every hour and installs it on its own, then restarts into it. Turn off **Install app updates automatically** in **Settings** to be asked first instead. |
 
 Officers also get automatic sync. See [run a raid night](../officers/raid-night.md).
+
+## Check your accounts (officers)
+
+Officers' **Overview** tab lists each WoW account's save file and what's waiting to sync. It
+says **nothing recorded yet** until SQL has new sessions, loot or awards to send, so that's
+normal between raids. **Couldn't read the save: <reason>** means the companion couldn't make
+sense of `SideQuest.lua`. Type `/reload` in game so WoW rewrites the file, then select **Sync
+now** again. If it keeps happening, copy the exact reason shown and send it to an officer, or
+fall back to uploading the save by hand on the
+[sync page](https://sidequest-guild.com/officers/sync/) (see
+[run a raid night](../officers/raid-night.md)).
 
 ## Sign out
 

@@ -11,9 +11,13 @@ loot points. You can also sign up for events and ask for standby from inside the
    `_forever_/Interface/AddOns/`.
 2. Check you have `Interface/AddOns/SideQuest/SideQuest.toc`.
 3. In game, click the crest on the minimap or type `/sq` to open the window. Drag the crest
-   round the minimap to move it, or type `/sq minimap` to hide it.
+   round the minimap to move it, or type `/sq minimap` to hide it. If you aren't in the guild
+   yet, this opens a join window instead, with the website and Discord links and how to ask for
+   an invite; the full window opens on its own once you're a member.
 
-The [companion app](companion.md) can also install the addon for you and keep it up to date.
+The [companion app](companion.md) can also install the addon for you and keep it up to date. If
+it installs an update while you're playing, SideQuest tells you in game with a **Reload now**
+popup; the game keeps running the old version until you `/reload`.
 
 :::{note}
 CurseForge and GitHub serve the same signed zip. See the addon's
@@ -26,19 +30,24 @@ download came from the real repo.
 | Tab | What it shows |
 |---|---|
 | You | Your PR and where it ranks, your last four weeks of points, your next event with Going, Maybe and Can't buttons, and who's online. |
-| Guild | The roster, with alts under their main. Search it, filter by class, rank or online, and whisper or invite from it. |
+| Guild | The roster, with alts under their main. Search it, filter by class, rank or online, and whisper or invite from it. Whisper opens a small SideQuest box of its own; replies come back in chat as usual. Online guildmates show in green, offline in grey. |
 | Crafters | Search a recipe or profession to see who can make it, online people first. Pick a profession to see every member who has it and their skill, or check who has Transmute, Mooncloth and other craft cooldowns ready. |
-| Market | What guildmates sell and want to buy, open requests for materials, and who holds an item. **Mine** lists and edits your own. |
-| Events | Upcoming events, how many have signed up for each role, and your own answer. |
+| Market | What guildmates sell and want to buy, open requests for materials, and who holds an item, with the guild's lowest auction-house price next to each listing when one's known. **Mine** lists and edits your own. |
+| Events | Upcoming events, how many have signed up for each role, and your own answer, then the last 30 days' past events with how many went. |
 | Ledger | Everyone's EP, GP and PR, then your own points history and loot. |
 | News | Guild announcements and recent activity. |
 
 Click someone on the Guild tab to see their level, spec, item level, professions, Onyxia
 attunement, tracked reputations and cooldowns. Hover any item to see which guildmates craft,
-sell, buy or hold it.
+sell, buy or hold it, and the guild's lowest auction-house price if a sync has priced it.
 
 Your sign-ups from the addon reach the website the next time an officer syncs a raid night. You
 don't need to do anything else.
+
+You get the guild's new points and events the same automatic way: once an officer imports a
+sync (through the companion app, or by pasting it on the Console's **Sync** tab and selecting
+**Import**), every member online receives them from that officer's addon right away, and anyone
+who logs in later gets them from any officer online. You never need to import anything yourself.
 
 ## What the addon shares
 
@@ -96,9 +105,8 @@ fails:
 - Addon messages inside a raid. If the loot popup can't reach you, ask an officer to award loot
   by hand and read points out in voice chat.
 - Master loot, which arrives with the raids on December 9.
-- The guild bank log.
-- Reading professions, recipes, cooldowns, attunements and bag contents. Each of these uses a
-  part of the game that changed for Forever; a part that fails just stays empty.
+- The guild bank log and recipe lists. If the game doesn't offer them, the Bank and Crafters
+  tabs say so.
 
 See [Understand your points](points.md) for what EP, GP and PR mean, and the
 [raids page](https://sidequest-guild.com/raids/) for how a raid night runs.
