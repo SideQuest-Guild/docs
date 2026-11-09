@@ -8,6 +8,12 @@ game. See [Join the guild](join.md) for the steps.
 See [Roles and ranks](roles.md) for every role the server uses, how you get it, and what it
 means.
 
+## Addons
+
+`#addons`, just below `#rules`, lists the addons raiders must run on raid nights and the ones
+the guild suggests. The bot keeps it the same as the
+[addons page](https://sidequest-guild.com/addons/), so read either one.
+
 ## The welcome DM and Start here
 
 The first time you sign in, the bot sends you a welcome DM. If you miss it, select the pinned
