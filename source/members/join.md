@@ -1,7 +1,7 @@
 # Join the guild
 
-Joining has three steps: sign in, link Battle.net, then wait for a Quest Master to confirm you
-in game. Each step opens more of the guild's Discord.
+Sign in and link Battle.net, then the site confirms you on its own once you're in the guild in
+game. Each step opens more of the guild's Discord.
 
 ## Sign in with Discord
 
@@ -25,26 +25,38 @@ it.
 Linking gives you the **Battle-Tagged** role. Officers use your BattleTag to match you to your
 characters in game.
 
-## Wait to be confirmed
+## Get confirmed on the roster
 
-Once you're in the guild in game, a Quest Master checks the roster and confirms you. Confirming
-gives you the **New Arrival** role, which opens the rest of the guild's Discord channels. Until
-then you can see only the sign-in channel.
+Once you're in the guild in game, you get confirmed one of two ways:
 
-:::{dropdown} What do the roles mean?
+- **Linked Battle.net:** once your character shows up on the in-game guild roster, the site
+  confirms you on its own, usually within 30 minutes (right away if you're already on the
+  roster when you link). A Quest Master can still remove your confirmation by hand; if they do,
+  you need a Quest Master to confirm you again before it comes back, even if you're still on
+  the roster.
+- **Didn't sign in or link anything:** join the Discord and ask a Quest Master. They right-click
+  your name, select **Apps**, then **Confirm in guild**. You get confirmed without ever signing
+  in on the site.
+
+Either way, confirming gives you the **New Arrival** role, which opens the rest of the guild's
+Discord channels. Until then you can see only `#sign-the-ledger`.
+
+::::{dropdown} What do the roles mean?
 Discord roles track where you are in joining, in this order:
 
-- **At the Gate**: you're in the server but haven't signed in yet.
+- **At the Gate**: you're in the server but haven't signed in and haven't been confirmed by a
+  Quest Master yet.
 - **Signed the Ledger**: you signed in with Discord.
 - **Battle-Tagged**: you linked Battle.net.
-- **New Arrival**: a Quest Master confirmed you're in the guild in game. The guild channels
-  open.
+- **New Arrival**: you're confirmed as in the guild in game, automatically or by a Quest Master.
+  The guild channels open.
 
 These roles stay in sync with the site. A Quest Master can remove **New Arrival** if you leave
-the in-game guild.
-:::
+the in-game guild; once removed, you need a Quest Master to confirm you again, even if you're
+still on the in-game roster.
+::::
 
-:::{dropdown} What are the guild ranks?
+::::{dropdown} What are the guild ranks?
 Above member, the guild has two officer ranks:
 
 - **Quest Guide**: an officer. Runs events, attendance and recruiting.
@@ -53,4 +65,4 @@ Above member, the guild has two officer ranks:
 
 See the [guild rules](https://sidequest-guild.com/rules/) and the officers'
 [code of conduct](../officers/conduct.md) for how officers use these ranks.
-:::
+::::

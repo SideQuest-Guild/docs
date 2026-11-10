@@ -29,6 +29,16 @@ up. See [Roles and ranks](roles.md) for the full role list.
 2. Type `/rank @someone` to see theirs.
 3. Type `/leaderboard` to see the top of the server.
 
+## Find a group in #lfg
+
+Select a button in `#lfg` to spawn a voice channel for that kind of group. Fill in a name, a
+note and who you need, then invite people or wait for others to join.
+
+Select **PUG group** to bring in outside players who aren't in the guild. `#lfg` gives you an
+invite link to share with them; anyone who joins through it sees only your group's channel and
+`#sign-the-ledger`. The bot removes anyone who hasn't signed in or been confirmed within 30
+minutes of the group ending, so tell them to sign in if they want to stick around.
+
 ## Class halls
 
 Pick your class in `#choose-your-class` to join that class's post in `#class-halls`.

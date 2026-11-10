@@ -6,7 +6,7 @@ sees what under Server Settings, Integrations. A setting saves to the API at onc
 | Command | Needs | What it does |
 |---|---|---|
 | `/eventsync forum [channel]` | Manage Server | Picks the forum for event threads. |
-| `/lfg channel <channel>`, `/lfg pingrole <kind> [role]`, `/lfg status` | Manage Server | Picks the `#lfg` panel channel, sets a kind's opt-in ping role, or shows live groups. |
+| `/lfg channel <channel>`, `/lfg pingrole <kind> [role]`, `/lfg pugrole <role>`, `/lfg status` | Manage Server | Picks the `#lfg` panel channel, sets a kind's opt-in ping role, sets the role PUG group invites grant outside players, or shows live groups. |
 | `/weeklyboard channel`, `/weeklyboard preview` | Manage Server | Picks the weekly board's channel, or shows this week's board. |
 | `/badges channel`, `/badges sync` | Manage Server | Picks where badges are announced, or checks for new badges now. |
 | `/lootlog channel` | Manage Server | Picks where council loot decisions are posted, with their reasons. |
@@ -26,6 +26,14 @@ sees what under Server Settings, Integrations. A setting saves to the API at onc
 | `/ban`, `/unban` | Ban Members | Same as above. |
 | `/cases [member]`, `/case <n>`, `/reason <n> <text>` | Timeout Members | Look up or explain past cases. |
 | `/automod ...` | Manage Server | Deletes invite links, and times people out for mention spam or floods. |
+
+::::{note}
+To let members start PUG groups: create a Discord role that can see nothing but
+`#sign-the-ledger`, then pick it with `/lfg pugrole`. The bot also needs **Manage Roles** (to
+grant the PUG role and each group's own temporary role), **Create Invite** (to make the invite
+link a PUG group's owner shares) and **Kick Members** (to remove anyone who hasn't signed in or
+been confirmed 30 minutes after their group ends).
+::::
 
 :::{note}
 Nobody can moderate the server owner, the bot, themselves, or someone whose top role sits at or

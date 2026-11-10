@@ -15,7 +15,7 @@ Officers give these roles by hand in Discord, and in game they promote you to th
 | Expedition Leader | Picked by the Quest Masters and Quest Guides. | Leads raids. |
 | Seasoned Adventurer | Character level 60, and the {ref}`Raid Regular <hall-of-heroes-badges>` badge (10 raids with the guild). | |
 | Adventurer | 14 days in the guild, and the {ref}`First Steps <hall-of-heroes-badges>` badge (came to a guild event). | |
-| New Arrival | Automatic once an officer confirms you on the site's roster: a Quest Master selects **Approve** on your sign-up notice, or a Quest Master or Quest Guide confirms you on the [Officers page](https://sidequest-guild.com/officers/). | Opens the rest of the guild's Discord channels. See [Join the guild](join.md). |
+| New Arrival | Automatic once you're confirmed on the site's roster: linking Battle.net and showing up on the in-game guild roster confirms you within about 30 minutes, or a Quest Master selects **Approve** on your sign-up notice, confirms you on the [Officers page](https://sidequest-guild.com/officers/), confirms you in the addon's Roster tab, or right-clicks you in Discord and selects **Confirm in guild**. | Opens the rest of the guild's Discord channels. See [Join the guild](join.md). |
 | Alternate Path | Given by hand for an alt character. | |
 
 See the [officers' code](../officers/conduct.md) and the
@@ -34,7 +34,7 @@ The site and the bot grant and remove these on their own.
 
 | Role | How you get it |
 |---|---|
-| At the Gate | You're in the server but haven't signed in to the site yet. Removed the moment you sign in. |
+| At the Gate | You're in the server but haven't signed in to the site and haven't been confirmed by a Quest Master. Removed once either happens. |
 | Signed the Ledger | You signed in with Discord on the site. |
 | Battle-Tagged | You linked Battle.net on your [account page](account.md). |
 | New Arrival | See [Guild ranks](#guild-ranks) above. |

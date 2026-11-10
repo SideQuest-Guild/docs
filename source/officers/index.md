@@ -6,7 +6,7 @@ attendance, recruiting, raid nights, and the Discord bot's officer commands.
 - **[The officers' code](conduct.md)**: how officers treat members and each other.
 - **[Run events](events.md)**: create, edit, repeat and cancel events.
 - **[Mark attendance](attendance.md)**: who came, walk-ins, and voice minutes.
-- **[Confirm members](members.md)**: the roster, the Approve button, recruiting.
+- **[Confirm members](members.md)**: auto-confirm, the roster, Discord-only confirms, and recruiting.
 - **[Run a raid night](raid-night.md)**: prep, invite, loot, and syncing to the site.
 - **[Discord commands](discord.md)**: the slash commands officers use day to day.
 
