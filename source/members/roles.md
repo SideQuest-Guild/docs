@@ -1,7 +1,8 @@
 # Roles and ranks
 
 This page lists every Discord role SideQuest uses: the guild ranks, and the roles the site and
-the bot hand out on their own.
+the bot hand out on their own. The same list, kept up to date by the bot, is in `#roles`, just
+below `#addons`.
 
 ## Guild ranks
 
@@ -41,6 +42,7 @@ The site and the bot grant and remove these on their own.
 | Away on a Quest | You marked away dates on your [account page](account.md) that include today. |
 | Level roles (Lv 5 · Wayfarer through Lv 50 · Legend) | Chat, voice, event and `#lfg` group XP levels you up; the matching role comes on its own. See [Discord channels and roles](discord.md#chat-levels). |
 | Class roles | Pick your class in `#choose-your-class`; it's a self-select role menu, and picking one also adds you to that class's post in `#class-halls`. |
+| PUG | An outside player who joined a [PUG group](discord.md) with its invite link. You see only that group's channel and `#sign-the-ledger`. Removed 30 minutes after the group ends, unless you sign the ledger or a Quest Master confirms you. |
 | Server Booster | Discord's own role for anyone boosting the server. |
 
 (hall-of-heroes-badges)=
@@ -53,7 +55,11 @@ away, except Top Helper, which moves to the next month's winner. See the Hall of
 exact rules and current standings:
 
 First Steps, First Raid, Raid Regular, Raid Veteran, Perfect Month, Founding Member, Chatterbox,
-Top Helper, Party Animal and Party Leader.
+Top Helper, Party Animal, Party Leader, Open Road, Crossroads Host and Caravan Master.
+
+The last three are for hosting PUG groups from `#lfg`: a PUG group counts once outside players
+spend ten minutes in it with the guild. Host your first for **Open Road**, 10 for **Crossroads
+Host**, and 25 for **Caravan Master**.
 
 ::::{note}
 A handful of roles aren't listed here because nothing about them is guild-specific: the bot's own

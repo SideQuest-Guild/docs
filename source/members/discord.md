@@ -6,7 +6,7 @@ game. See [Join the guild](join.md) for the steps.
 ## Roles you'll hold
 
 See [Roles and ranks](roles.md) for every role the server uses, how you get it, and what it
-means.
+means. `#roles`, just below `#addons`, shows the same list in Discord.
 
 ## Addons
 
