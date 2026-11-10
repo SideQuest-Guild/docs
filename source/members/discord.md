@@ -23,7 +23,7 @@ The first time you sign in, the bot sends you a welcome DM. If you miss it, sele
 
 Each message you send earns 15 to 25 XP, at most once a minute. Levels run from **Lv 5 ·
 Wayfarer** up to **Lv 50 · Legend**, and the matching role is handed out on its own as you level
-up. See [Roles and ranks](roles.md) for the full role list.
+up, replacing the one before it. See [Roles and ranks](roles.md) for the full role list.
 
 1. Type `/rank` in any channel to see your own level.
 2. Type `/rank @someone` to see theirs.

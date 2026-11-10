@@ -34,9 +34,9 @@ Once you're in the guild in game, you get confirmed one of two ways:
   roster when you link). A Quest Master can still remove your confirmation by hand; if they do,
   you need a Quest Master to confirm you again before it comes back, even if you're still on
   the roster.
-- **Didn't sign in or link anything:** join the Discord and ask a Quest Master. They right-click
-  your name, select **Apps**, then **Confirm in guild**. You get confirmed without ever signing
-  in on the site.
+- **Rather not sign in or link anything:** in `#sign-the-ledger`, select **I'd rather not sign
+  in** and enter your character's name. The request goes to the officers, and a Quest Master
+  confirms you from Discord. You get confirmed without ever signing in on the site.
 
 Either way, confirming gives you the **New Arrival** role, which opens the rest of the guild's
 Discord channels. Until then you can see only `#sign-the-ledger`.

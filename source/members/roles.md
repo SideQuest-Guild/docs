@@ -40,7 +40,7 @@ The site and the bot grant and remove these on their own.
 | Battle-Tagged | You linked Battle.net on your [account page](account.md). |
 | New Arrival | See [Guild ranks](#guild-ranks) above. |
 | Away on a Quest | You marked away dates on your [account page](account.md) that include today. |
-| Level roles (Lv 5 · Wayfarer through Lv 50 · Legend) | Chat, voice, event and `#lfg` group XP levels you up; the matching role comes on its own. See [Discord channels and roles](discord.md#chat-levels). |
+| Level roles (Lv 5 · Wayfarer through Lv 50 · Legend) | Chat, voice, event and `#lfg` group XP levels you up; the matching role comes on its own. You hold only your highest one: reaching the next level role replaces the last. See [Discord channels and roles](discord.md#chat-levels). |
 | Class roles | Pick your class in `#choose-your-class`; it's a self-select role menu, and picking one also adds you to that class's post in `#class-halls`. |
 | PUG | An outside player who joined a [PUG group](discord.md) with its invite link. You see only that group's channel and `#sign-the-ledger`. Removed 30 minutes after the group ends, unless you sign the ledger or a Quest Master confirms you. |
 | Server Booster | Discord's own role for anyone boosting the server. |

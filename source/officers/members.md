@@ -29,8 +29,12 @@ them again, even if they're still on the in-game guild roster.
 
 ## Confirm someone who never signs in
 
-Some members join the Discord and never sign in on the site. A Quest Master can still confirm
-them:
+Some members join the Discord and never sign in on the site. When one selects **I'd rather not
+sign in** in `#sign-the-ledger`, the bot posts their request in `#officer-chat` with their
+character name and a **Confirm in guild** button. Check they're in the in-game guild, then select
+the button. Only Quest Masters can use it.
+
+You can also confirm anyone directly:
 
 1. Right-click (or long-press on mobile) their name in the member list.
 2. Select **Apps**, then **Confirm in guild**.
