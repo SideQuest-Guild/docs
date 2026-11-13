@@ -44,3 +44,48 @@ event's weekly board card if it has one. Cancelling an event marks its card canc
 removes the buttons. Deleting an event in Discord only cancels it; the website keeps the record
 and its sign-ups.
 :::
+
+## Run a recruitment drive
+
+A recruitment drive is a 2 week event that rewards members for inviting new players. See
+[Recruitment drives](../members/events.md#recruitment-drives) for the reward and the rules a
+recruit has to meet.
+
+### Create a drive
+
+1. Go to the [Officers page](https://sidequest-guild.com/officers/).
+2. Select the **Events** tab.
+3. Under **Plan a night**, choose the kind **Recruitment Drive**.
+4. Set a title and start time. The start must be in the future, so Discord can post the drive.
+   The end time defaults to 14 days after the start; change it if this drive should run longer
+   or shorter.
+5. Select **Save event**.
+
+A recruitment drive doesn't take sign-ups. Members invite in game instead.
+
+### Put it on the in-game calendar
+
+1. Open the addon's Console **Sync** tab and select **Update calendar**, or type `/sq calendar`.
+
+A recruitment drive adds two guild announcements instead of one: the drive's title at the start,
+and `Ends: <title>` at the end. Both link to the drive's page on the site.
+
+### Sweep the guild log during the drive
+
+The in-game guild log only keeps its most recent entries, so an officer's addon has to sweep the
+roster and export regularly during a drive to catch every invite, join, quit and removal before
+the log drops them. Sweep at least once a day while a drive is running, more often if the guild
+is busy.
+
+### Pay out
+
+A drive's recruits are ready to pay a week after the drive ends. Pay each inviter one of two
+ways:
+
+- **In game:** open a mailbox, then open the addon Console's **Payouts** sub-tab and select
+  the row's **Mail** button (labelled with the gold amount, such as "Mail 3g"). It sends the
+  mail straight away, with the recruits listed in the note, and marks the row paid once the
+  mail sends. If the mail fails, the row stays unpaid and the button stays there to try again.
+- **By hand:** mail the gold yourself, then go to the
+  [Officers page](https://sidequest-guild.com/officers/), select the **Recruitment** tab, find
+  the inviter under **Recruitment payouts** and select **Mark paid**.

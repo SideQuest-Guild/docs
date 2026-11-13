@@ -64,3 +64,37 @@ own calendar app without checking the site. See [Manage your account](account.md
 If you know you'll miss some events, mark the dates on your [account page](account.md). Raid
 leads see you're away on any event in that range, and you get the **Away on a Quest** Discord
 role for those days.
+
+## Recruitment drives
+
+A recruitment drive is a 2 week guild event. Officers run one from time to time to bring in new
+players, and it shows up on the events page like any other event, except there's nothing to
+sign up for.
+
+### How to invite
+
+Invite someone the normal way, with a regular in-game guild invite. You don't need the addon to
+take part.
+
+### What counts
+
+A recruit earns you a reward only if all of these are true:
+
+- They're new to the guild. Someone who was already a member before the drive started doesn't
+  count.
+- They reach level 10.
+- They stay in the guild for 7 days in a row. Quitting or getting removed during that week
+  disqualifies the invite, though you can invite them again.
+- They aren't your own alt. [Link Battle.net](account.md) on your account page so the site
+  knows which characters are yours.
+
+You earn 1g for every recruit who qualifies.
+
+### Get paid
+
+Payouts go out a week after the drive ends, by in-game mail from an officer.
+
+### See the leaderboard
+
+Open the drive's event page on the site, or its thread in Discord, to see who's invited the
+most and who's qualified so far.
