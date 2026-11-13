@@ -97,5 +97,15 @@ The winner gets the prize a week after the drive ends, by in-game mail from an o
 
 ### See the leaderboard
 
-Open the drive's event page on the site, or its thread in Discord, to see who's invited the
-most and who's qualified so far.
+Open the drive's event page on the site, its thread in Discord, or the Events tab in the
+SideQuest addon to see who's invited the most and who's qualified so far.
+
+Each inviter has three numbers:
+
+- **Qualified**: recruits who stayed 7 days and reached level 10. These decide the winner.
+- **Potential**: recruits who joined and are still inside their 7 days. They count once their
+  week is up, as long as they stay and reach level 10.
+- **Invited**: everyone they invited during the drive.
+
+The addon's copy updates when an officer's addon brings in new site data, so it can be a few
+hours behind the site.

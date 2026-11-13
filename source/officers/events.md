@@ -65,10 +65,20 @@ A recruitment drive doesn't take sign-ups. Members invite in game instead.
 
 ### Put it on the in-game calendar
 
+Your addon only knows about the drive once it has the site's latest data. SideQuest Companion
+brings that in when WoW is closed, so it shows up at your next login. To get it right away
+while playing, open the [Officers sync page](https://sidequest-guild.com/officers/sync/),
+select **Copy game import string**, and paste it into `/sq import` in game.
+
+Then:
+
 1. Open the addon's Console **Sync** tab and select **Update calendar**, or type `/sq calendar`.
+   Select it once for each announcement.
 
 A recruitment drive adds two guild announcements instead of one: the drive's title at the start,
-and `Ends: <title>` at the end. Both link to the drive's page on the site.
+and `Ends: <title>` at the end. Both link to the drive's page on the site. The game won't add an
+announcement in the past, so if the drive has already started, only the `Ends: <title>` one is
+added.
 
 ### Sweep the guild log during the drive
 
