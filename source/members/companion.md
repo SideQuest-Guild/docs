@@ -61,22 +61,25 @@ If it can't, open **Settings → WoW Folders**, choose **Add folder** and pick y
 | Feature | What it does |
 |---|---|
 | Addon updates | Checks for a new SideQuest addon every hour, and every 15 minutes while WoW is running, and installs it on its own. WoW doesn't have to be closed: the game shows a popup telling you to `/reload` once the new version is in place. Turn off **Install updates automatically** in **Settings** to install updates in a click instead. **Check for updates** on the **Overview** or **Addon** tab checks right away. The chevron beside an installed version lets you pick an older release instead of the latest, for example to roll back one with a bug; installing anything but the latest pins it there until you choose **Back to latest**. |
-| Event reminders | A notification 30 minutes before raids you've signed up for. In **Settings** you can pick every scheduled event instead, and which kinds: raids, dungeons, world bosses, leveling, PvP, socials, transmog and other events. The **Events** tab lists what's coming up. |
-| Sync now (officers) | Uploads any new raid night right away, and says whether it worked or that there was nothing new to send. |
+| Auto sync | Every time WoW writes its save file (when you `/reload`, log out or close the game), the companion uploads your part right away: your sign-ups and your characters' directory entry (professions, market listings). Your sign-ups reach the site even when no officer is online. Only characters you've [linked to your account](account.md) count. Officers' raid nights upload the same way. |
+| Sync now | Uploads your save right away and says whether it worked or that there was nothing new to send. |
+| Standings | Your EP, GP, PR and rank, and the top 10, straight from the site. |
+| Events | What's coming up on the site, with how many are going and your own answer. During a recruitment drive it shows the leaderboard (qualified, potential and invited recruits per inviter) and how your own recruits are doing. The tab also lists your reminders. |
+| Guild | The guild roster, with each character's level, class and when the addon last saw them, and the latest guild news. |
+| Event reminders | A notification 30 minutes before raids you've signed up for. In **Settings** you can pick every scheduled event instead, and which kinds: raids, dungeons, world bosses, leveling, PvP, socials, transmog and other events. |
 | App updates | Checks for a new app version every hour and installs it on its own, then restarts into it. Turn off **Install app updates automatically** in **Settings** to be asked first instead. |
 
-Officers also get automatic sync. See [run a raid night](../officers/raid-night.md).
+The **Standings**, **Events** and **Guild** tabs refresh every 2 minutes and right after each upload.
 
-## Check your accounts (officers)
+Officers also get the site's newest import back in game: see
+[run a raid night](../officers/raid-night.md).
 
-Officers' **Overview** tab lists each WoW account's save file and what's waiting to sync. It
-says **nothing recorded yet** until SQL has new sessions, loot or awards to send, so that's
-normal between raids. **Couldn't read the save: <reason>** means the companion couldn't make
-sense of `SideQuest.lua`. Type `/reload` in game so WoW rewrites the file, then select **Sync
-now** again. If it keeps happening, copy the exact reason shown and send it to an officer, or
-fall back to uploading the save by hand on the
-[sync page](https://sidequest-guild.com/officers/sync/) (see
-[run a raid night](../officers/raid-night.md)).
+## Check your accounts
+
+The **Overview** tab lists each WoW account's save file and what's waiting to sync.
+**Couldn't read the save: <reason>** means the companion couldn't make sense of `SideQuest.lua`.
+Type `/reload` in game so WoW rewrites the file, then select **Sync now** again. If it keeps
+happening, copy the exact reason shown and send it to an officer.
 
 ## Sign out
 
