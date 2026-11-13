@@ -71,8 +71,8 @@ back from the site to the addon. The companion app and `sidequest-sync` move the
 automatically; an officer can also paste them by hand on `/officers/sync/`. Both formats are
 defined once, on the website side, in
 `packages/sidequest-common/src/sidequest_common/schemas/epgp.py` and `guild_hub.py`. A change to
-either format needs matching changes in the addon's `Sync.lua` and, if it touches the staged
-import file, the companion's `src/sync.rs`.
+either format needs matching changes in the addon's `Sync.lua` and, if it touches the
+`SideQuest_Inbox/Inbox.lua` file the companion writes for the addon, the companion's `src/sync.rs`.
 
 ## How a change ships
 

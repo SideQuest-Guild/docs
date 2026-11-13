@@ -44,8 +44,8 @@ See [Understand your points](../members/points.md) for what EP, GP and PR mean, 
 After the raid, the record has to reach the site. Pick whichever is easiest:
 
 1. **SideQuest Companion** (recommended): once an officer is signed in, it uploads a new export
-   within seconds of the addon writing it, and stages the site's reply back into the save file
-   for the addon to pick up automatically.
+   within seconds of the addon writing it, and keeps the site's reply ready for the addon, so
+   your next `/reload` picks it up.
 2. Type `/sq export`, copy the text, and paste it on the
    [sync page](https://sidequest-guild.com/officers/sync/).
 3. Upload the addon's save file on the same page.
@@ -58,9 +58,10 @@ After the raid, the record has to reach the site. Pick whichever is easiest:
 3. Type `/sq import` in game and paste it.
 4. Type `/sq export clear` so the next night starts empty.
 
-SideQuest Companion does this automatically for a signed-in officer: it stages the import so the
-next login picks it up with nothing to copy or paste. Once one officer imports, every member
-online gets the new points.
+SideQuest Companion does this automatically for a signed-in officer: it keeps the site's newest
+import in its own small `SideQuest_Inbox` addon, so your next `/reload` or login picks it up
+with nothing to copy or paste, even mid-session. The first time, restart WoW once so the game
+notices `SideQuest_Inbox`. Once one officer imports, every member online gets the new points.
 
 ## Put events on the in-game calendar
 

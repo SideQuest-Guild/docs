@@ -65,10 +65,10 @@ A recruitment drive doesn't take sign-ups. Members invite in game instead.
 
 ### Put it on the in-game calendar
 
-Your addon only knows about the drive once it has the site's latest data. SideQuest Companion
-brings that in when WoW is closed, so it shows up at your next login. To get it right away
-while playing, open the [Officers sync page](https://sidequest-guild.com/officers/sync/),
-select **Copy game import string**, and paste it into `/sq import` in game.
+Your addon only knows about the drive once it has the site's latest data. With SideQuest
+Companion running, type `/reload` a few minutes after creating the drive and it's there. Without
+the companion, open the [Officers sync page](https://sidequest-guild.com/officers/sync/), select
+**Copy game import string**, and paste it into `/sq import` in game.
 
 Then:
 
