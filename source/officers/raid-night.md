@@ -72,8 +72,10 @@ aren't on the guild calendar yet.
 2. Repeat until it says the calendar matches. The game allows one new calendar event per click.
 
 Events go on as guild events at realm time (WoW: Forever has no guild announcements), with a link
-to the sign-up page. Signing up on the calendar itself doesn't reach the site. If the site moves or
-cancels an event, the next clicks take the old one off and add the new one. Your guild rank needs
+to the sign-up page. Signing up on the calendar itself doesn't reach the site. If the site moves an
+event, it takes two clicks: the first opens the event and the second saves the new time. The game
+doesn't let addons delete guild events, so when the site cancels one, the addon names it in chat
+and you delete it by hand (right-click it on the calendar, then **Delete**). Your guild rank needs
 the right to add guild events.
 
 See the [addon's developer page](../developers/addon/index.md) for the full raid night walkthrough and
