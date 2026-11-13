@@ -78,7 +78,7 @@ take part.
 
 ### What counts
 
-A recruit earns you a reward only if all of these are true:
+A recruit counts toward your total only if all of these are true:
 
 - They're new to the guild. Someone who was already a member before the drive started doesn't
   count.
@@ -88,11 +88,12 @@ A recruit earns you a reward only if all of these are true:
 - They aren't your own alt. [Link Battle.net](account.md) on your account page so the site
   knows which characters are yours.
 
-You earn 1g for every recruit who qualifies.
+Whoever has the most recruits that count wins 1g. If two or more members tie for the most, each
+of them wins 1g.
 
 ### Get paid
 
-Payouts go out a week after the drive ends, by in-game mail from an officer.
+The winner gets the prize a week after the drive ends, by in-game mail from an officer.
 
 ### See the leaderboard
 

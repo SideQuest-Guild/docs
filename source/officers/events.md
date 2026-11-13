@@ -47,9 +47,9 @@ and its sign-ups.
 
 ## Run a recruitment drive
 
-A recruitment drive is a 2 week event that rewards members for inviting new players. See
-[Recruitment drives](../members/events.md#recruitment-drives) for the reward and the rules a
-recruit has to meet.
+A recruitment drive is a 2 week contest: the member who brings in the most new players wins a
+prize. See [Recruitment drives](../members/events.md#recruitment-drives) for the prize and the
+rules a recruit has to meet.
 
 ### Create a drive
 
@@ -79,13 +79,13 @@ is busy.
 
 ### Pay out
 
-A drive's recruits are ready to pay a week after the drive ends. Pay each inviter one of two
-ways:
+A week after a drive ends, its winner shows up under **Recruitment payouts**, or several
+winners if they tied. Pay each winner one of two ways:
 
 - **In game:** open a mailbox, then open the addon Console's **Payouts** sub-tab and select
-  the row's **Mail** button (labelled with the gold amount, such as "Mail 3g"). It sends the
-  mail straight away, with the recruits listed in the note, and marks the row paid once the
-  mail sends. If the mail fails, the row stays unpaid and the button stays there to try again.
+  the row's **Mail** button (labelled with the prize, "Mail 1g"). It sends the mail straight
+  away, with the winner's recruits listed in the note, and marks the row paid once the mail
+  sends. If the mail fails, the row stays unpaid and the button stays there to try again.
 - **By hand:** mail the gold yourself, then go to the
   [Officers page](https://sidequest-guild.com/officers/), select the **Recruitment** tab, find
-  the inviter under **Recruitment payouts** and select **Mark paid**.
+  the winner under **Recruitment payouts** and select **Mark paid**.
