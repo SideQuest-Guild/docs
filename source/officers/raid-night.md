@@ -71,9 +71,10 @@ aren't on the guild calendar yet.
 1. Click **Update calendar**, or type `/sq calendar`.
 2. Repeat until it says the calendar matches. The game allows one new calendar event per click.
 
-Events go on as guild announcements at realm time, with a link to the sign-up page. If the site
-moves or cancels an event, the next clicks take the old one off and add the new one. Your guild
-rank needs the right to add guild events.
+Events go on as guild events at realm time (WoW: Forever has no guild announcements), with a link
+to the sign-up page. Signing up on the calendar itself doesn't reach the site. If the site moves or
+cancels an event, the next clicks take the old one off and add the new one. Your guild rank needs
+the right to add guild events.
 
 See the [addon's developer page](../developers/addon/index.md) for the full raid night walkthrough and
 loot bidding rules, and [use the companion app](../members/companion.md) to set it up.

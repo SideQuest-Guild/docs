@@ -73,12 +73,15 @@ the companion, open the [Officers sync page](https://sidequest-guild.com/officer
 Then:
 
 1. Open the addon's Console **Sync** tab and select **Update calendar**, or type `/sq calendar`.
-   Select it once for each announcement.
+   Select it once for each calendar event.
 
-A recruitment drive adds two guild announcements instead of one: the drive's title at the start,
-and `Ends: <title>` at the end. Both link to the drive's page on the site. The game won't add an
-announcement in the past, so if the drive has already started, only the `Ends: <title>` one is
-added.
+Each site event goes on the calendar as a guild event, since WoW: Forever has no guild
+announcements. Signing up on the calendar itself doesn't reach the site; members sign up in the
+addon or on the site.
+
+A recruitment drive adds two guild events instead of one: the drive's title at the start, and
+`Ends: <title>` at the end. Both link to the drive's page on the site. The game won't add an
+event in the past, so if the drive has already started, only the `Ends: <title>` one is added.
 
 ### Sweep the guild log during the drive
 
