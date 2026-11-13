@@ -80,8 +80,9 @@ announcements. Signing up on the calendar itself doesn't reach the site; members
 addon or on the site.
 
 A recruitment drive adds two guild events instead of one: the drive's title at the start, and
-`Ends: <title>` at the end. Both link to the drive's page on the site. The game won't add an
-event in the past, so if the drive has already started, only the `Ends: <title>` one is added.
+`Ends: <title>` at the end. Both are locked "Other" events, since a drive takes no sign-ups, and
+both link to the drive's page on the site. The game won't add an event in the past, so if the drive
+has already started, only the `Ends: <title>` one is added.
 
 ### Sweep the guild log during the drive
 
