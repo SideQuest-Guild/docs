@@ -29,6 +29,25 @@ up, replacing the one before it. See [Roles and ranks](roles.md) for the full ro
 2. Type `/rank @someone` to see theirs.
 3. Type `/leaderboard` to see the top of the server.
 
+## Look things up
+
+Type any of these in a channel. Start typing a name and Discord suggests matches. Item, quest,
+beast and achievement answers have buttons for the site's page and the Wowhead page; `/who` has
+an Armory button.
+
+- `/item thunderfury` shows an item's tooltip.
+- `/quest call of water` shows a quest: its zone, level, rewards, what it requires and where it
+  sits in its chain, from the earlier quests to what it leads to next.
+- `/beast` finds a beast hunters can tame, with its family and a portrait.
+- `/achievement` shows an achievement.
+- `/who` looks up a character by name and surname.
+- `/price` shows an item's auction house prices, and `/crafter` finds guild members who can
+  craft it.
+
+The site has the same lookups: the [quests page](https://sidequest-guild.com/quests/) searches
+quests by name, and the [tameable beasts page](https://sidequest-guild.com/beasts/) lists every
+beast hunters can tame.
+
 ## Find a group in #lfg
 
 Select a button in `#lfg` to spawn a voice channel for that kind of group. Fill in a name, a
