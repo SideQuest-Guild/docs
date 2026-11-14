@@ -27,7 +27,7 @@ See the [officers' code](../officers/conduct.md) and the
 | Role | Who it's for |
 |---|---|
 | NPC | Friends who don't play the game but want to be in the Discord. They never need to sign the ledger: the bot removes At the Gate as soon as someone is made an NPC. |
-| Familiar | Automated or bot accounts that aren't Game Master itself. |
+| Familiar | Automated or bot accounts that aren't Game Master itself. Like NPCs, they never need to sign the ledger. |
 
 ## Automatic roles
 
@@ -35,7 +35,7 @@ The site and the bot grant and remove these on their own.
 
 | Role | How you get it |
 |---|---|
-| At the Gate | You're in the server but haven't signed in to the site and haven't been confirmed by a Quest Master. Removed once either happens, or once you're made an NPC. |
+| At the Gate | You're in the server but haven't signed in to the site and haven't been confirmed by a Quest Master. Removed once either happens, or once you're made an NPC or Familiar. |
 | Signed the Ledger | You signed in with Discord on the site. |
 | Battle-Tagged | You linked Battle.net on your [account page](account.md). |
 | New Arrival | See [Guild ranks](#guild-ranks) above. |
