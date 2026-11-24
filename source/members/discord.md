@@ -53,6 +53,10 @@ beast hunters can tame.
 Select a button in `#lfg` to spawn a voice channel for that kind of group. Fill in a name, a
 note and who you need, then invite people or wait for others to join.
 
+In the channel's chat, **Set activity** lets the group's owner pick a dungeon or raid, or type
+what the group is doing. It shows under the channel's name in the voice list, so people can see
+what each group is running before they join.
+
 Select **PUG group** to bring in outside players who aren't in the guild. `#lfg` gives you an
 invite link to share with them; anyone who joins through it sees only your group's channel and
 `#sign-the-ledger`. The bot removes anyone who hasn't signed in or been confirmed within 30
