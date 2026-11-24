@@ -61,3 +61,7 @@ minutes of the group ending, so tell them to sign in if they want to stick aroun
 ## Class halls
 
 Pick your class in `#choose-your-class` to join that class's post in `#class-halls`.
+
+Each hall has a pinned post with buttons for the guides the guild recommends for that class, from
+Method and Mobalytics. When Blizzard posts WoW: Forever hotfixes, the bot posts that class's
+changes in its hall, with a link to Blizzard's full post.
