@@ -45,7 +45,9 @@ away. They get **New Arrival**, but never **Signed the Ledger**, since they have
 ## Approve a sign-in in Discord
 
 The first time anyone signs in, the bot posts a notice in an officers-only channel with their
-name, username, avatar and BattleTag (if linked).
+name, username, avatar, BattleTag (if linked) and their characters on the guild roster, the one
+they joined on first. A guest's characters often only show once they're confirmed: the notice
+fills them in then.
 
 1. Open the notice in the sign-ins channel.
 2. Select **Approve**.
