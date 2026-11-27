@@ -48,13 +48,6 @@ The site and the bot grant and remove these on their own.
 | PUG | An outside player who joined a [PUG group](discord.md) with its invite link. You see only that group's channel and `#sign-the-ledger`. Removed 30 minutes after the group ends, unless you sign the ledger or a Quest Master confirms you. |
 | Server Booster | Discord's own role for anyone boosting the server. |
 
-## Your nickname
-
-The first time the site knows one of your characters on the guild roster, the bot sets your
-server nickname to the character you joined the guild on, unless you already have a nickname.
-It only does this once: change your nickname whenever you like and it stays. Members who were
-here before this started aren't renamed.
-
 (hall-of-heroes-badges)=
 
 ### Hall of Heroes badges
@@ -76,3 +69,10 @@ A handful of roles aren't listed here because nothing about them is guild-specif
 managed role (Game Master) and the deploy preview app's managed role (Cabotage Preview) are
 Discord-managed and never granted or removed by hand.
 ::::
+
+## Your nickname
+
+The first time the site knows one of your characters on the guild roster, the bot sets your
+server nickname to the character you joined the guild on, unless you already have a nickname.
+It only does this once: change your nickname whenever you like and it stays. Members who were
+here before this started aren't renamed.
