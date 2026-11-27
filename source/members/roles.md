@@ -6,8 +6,11 @@ below `#addons`.
 
 ## Guild ranks
 
-Officers give these roles by hand in Discord, and in game they promote you to the matching guild rank. Only
-**New Arrival** comes on its own. Highest first:
+These roles follow your guild rank in game. When an officer promotes or demotes you there, the bot gives you the
+matching role within about half an hour (the time Battle.net takes to update the guild roster) and takes away the
+one you had. You hold one rank role: the highest any of your characters has. Officer roles (Quest Master, Quest Guide,
+Expedition Leader) only come from characters on your own linked Battle.net account. If none of your characters is
+on the guild roster yet, you keep the role you have. Highest first:
 
 | Rank | How you get it | What it means |
 |---|---|---|
@@ -17,7 +20,7 @@ Officers give these roles by hand in Discord, and in game they promote you to th
 | Seasoned Adventurer | Character level 60, and the {ref}`Raid Regular <hall-of-heroes-badges>` badge (10 raids with the guild). | |
 | Adventurer | 14 days in the guild, and the {ref}`First Steps <hall-of-heroes-badges>` badge (came to a guild event). | |
 | New Arrival | Automatic once you're confirmed on the site's roster: linking Battle.net and showing up on the in-game guild roster confirms you within about 30 minutes, or a Quest Master selects **Approve** on your sign-up notice, confirms you on the [Officers page](https://sidequest-guild.com/officers/), confirms you in the addon's Roster tab, or right-clicks you in Discord and selects **Confirm in guild**. | Opens the rest of the guild's Discord channels. See [Join the guild](join.md). |
-| Alternate Path | Given by hand for an alt character. | |
+| Alternate Path | Your characters on the guild roster are all at an alt rank in game. | |
 
 See the [officers' code](../officers/conduct.md) and the
 [guild rules](https://sidequest-guild.com/rules/) for how officers use these ranks.
