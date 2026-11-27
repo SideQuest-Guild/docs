@@ -97,7 +97,7 @@ A week after a drive ends, its winner shows up under **Recruitment payouts**, or
 winners if they tied. Pay each winner one of two ways:
 
 - **In game:** open a mailbox, then open the addon Console's **Payouts** sub-tab and select
-  the row's **Mail** button (labelled with the prize, "Mail 1g"). It sends the mail straight
+  the row's **Mail** button (labelled with the prize, "Mail 10g"). It sends the mail straight
   away, with the winner's recruits listed in the note, and marks the row paid once the mail
   sends. If the mail fails, the row stays unpaid and the button stays there to try again.
 - **By hand:** mail the gold yourself, then go to the

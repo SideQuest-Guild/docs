@@ -88,8 +88,8 @@ A recruit counts toward your total only if all of these are true:
 - They aren't your own alt. [Link Battle.net](account.md) on your account page so the site
   knows which characters are yours.
 
-Whoever has the most recruits that count wins 1g. If two or more members tie for the most, each
-of them wins 1g.
+Whoever has the most recruits that count wins 10g. If two or more members tie for the most, each
+of them wins 10g.
 
 ### Get paid
 
