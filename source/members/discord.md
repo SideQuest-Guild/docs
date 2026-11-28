@@ -14,6 +14,12 @@ means. `#roles`, just below `#addons`, shows the same list in Discord.
 the guild suggests. The bot keeps it the same as the
 [addons page](https://sidequest-guild.com/addons/), so read either one.
 
+## Auction house
+
+`#auction-house` gets the market report every day at 10:00 Central: the best materials to
+gather for each profession and level, and the crafts that make a profit. See
+[Make gold with the market report](market.md) to read it.
+
 ## The welcome DM and Start here
 
 The first time you sign in, the bot sends you a welcome DM. If you miss it, select the pinned

@@ -8,6 +8,7 @@ sees what under Server Settings, Integrations. A setting saves to the API at onc
 | `/eventsync forum [channel]` | Manage Server | Picks the forum for event threads. |
 | `/lfg channel <channel>`, `/lfg pingrole <kind> [role]`, `/lfg pugrole <role>`, `/lfg status` | Manage Server | Picks the `#lfg` panel channel, sets a kind's opt-in ping role, sets the role PUG group invites grant outside players, or shows live groups. |
 | `/weeklyboard channel`, `/weeklyboard preview` | Manage Server | Picks the weekly board's channel, or shows this week's board. |
+| `/marketreport channel`, `/marketreport preview` | Manage Server | Picks the channel for the daily market report, or shows today's report to you only. |
 | `/badges channel`, `/badges sync` | Manage Server | Picks where badges are announced, or checks for new badges now. |
 | `/lootlog channel` | Manage Server | Picks where council loot decisions are posted, with their reasons. |
 | `/announcements channel` | Manage Server | Picks where announcements from the game and the website are posted. |

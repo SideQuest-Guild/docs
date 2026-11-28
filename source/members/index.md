@@ -9,6 +9,7 @@ account and Discord. Pick a page below for your task.
 - **[Understand your points](points.md)**: Renown, SQL loot points, and your PR.
 - **[Loot: what happens when...](loot-scenarios.md)**: common raid loot situations, walked through.
 - **[Use the companion app](companion.md)**: install it, sign in, get addon updates and raid reminders.
+- **[Make gold with the market report](market.md)**: what to gather and craft for gold.
 - **[Manage your account](account.md)**: link Battle.net, get a calendar link, mark away dates.
 - **[Discord channels and roles](discord.md)**: find your way around the server.
 - **[Roles and ranks](roles.md)**: every Discord role, how you get it, and what it means.
@@ -27,6 +28,7 @@ addon
 companion
 points
 loot-scenarios
+market
 account
 discord
 roles
